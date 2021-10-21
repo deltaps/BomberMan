@@ -28,6 +28,42 @@ public class Personnage {
         return "Nom du personnage : " + this.name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getEnergie() {
+        return energie;
+    }
+
+    public void setEnergie(int energie) {
+        this.energie = energie;
+    }
+
+    public int getMunition() {
+        return munition;
+    }
+
+    public void setMunition(int munition) {
+        this.munition = munition;
+    }
+
+    public void setPosition(int[] position) {
+        this.position = position;
+    }
+
+    public boolean getBouclier() {
+        return bouclier;
+    }
+
+    public void setBouclier(boolean bouclier) {
+        this.bouclier = bouclier;
+    }
+
     public int[] getPosition() {
         return this.position;
     }

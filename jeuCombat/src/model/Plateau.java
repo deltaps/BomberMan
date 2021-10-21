@@ -15,6 +15,17 @@ public class Plateau {
         generePlateau(taille);
     }
 
+    public Plateau(List<Personnage> joueurs, boolean test){
+        this.plateau = new Case[3][3];
+        for(int x = 0; x < 3; x++){
+            for(int y = 0; y < 3; y++){
+                this.plateau[x][y] = new Case(false,false);
+            }
+        }
+        this.plateau[0][2].setWall(true);
+        this.plateau[2][0].setWall(true);
+    }
+
     public Case getCase(int x, int y) {
         return this.plateau[x][y];
     }

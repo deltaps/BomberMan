@@ -7,11 +7,13 @@ public class Case {
     protected boolean wall;
     protected boolean capsule;
     protected Weapon weapon;
+    protected int id;// Pour la génération aléatoire
 
 
     public Case(boolean wall, boolean capsule){
         this.wall = wall;
         this.capsule = capsule;
+        this.id = 0;
     }
 
     public boolean getWall(){
