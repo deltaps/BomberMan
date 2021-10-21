@@ -27,5 +27,12 @@ public class Personnage {
     public String toString() {
         return "Nom du personnage : " + this.name;
     }
-    
+
+    public int[] getPosition() {
+        return this.position;
+    }
+
+    public void addEnergie(int add) {
+        this.energie += add;
+    }
 }
