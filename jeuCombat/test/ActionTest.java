@@ -22,28 +22,28 @@ class ActionTest {
         Plateau plateau = new Plateau(liste,true);
         Action action = new Action(plateau);
         action.deplacement(perso,HAUT);
-        assertTrue(perso.getPosition()[0] == 0 && perso.getPosition()[0] == 1);
+        assertTrue(perso.getPosition()[0] == 0 && perso.getPosition()[1] == 1);
         perso.setPosition(new int[]{1,1});
         action.deplacement(perso,DROITE);
-        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[0] == 2);
+        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[1] == 2);
         perso.setPosition(new int[]{1,1});
         action.deplacement(perso,GAUCHE);
-        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[0] == 0);
+        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[1] == 0);
         perso.setPosition(new int[]{1,1});
         action.deplacement(perso,BAS);
-        assertTrue(perso.getPosition()[0] == 2 && perso.getPosition()[0] == 1);
+        assertTrue(perso.getPosition()[0] == 2 && perso.getPosition()[1] == 1);
         perso.setPosition(new int[]{0,1});
         action.deplacement(perso,DROITE);
-        assertTrue(perso.getPosition()[0] == 0 && perso.getPosition()[0] == 1);
+        assertTrue(perso.getPosition()[0] == 0 && perso.getPosition()[1] == 1);
         perso.setPosition(new int[]{1,2});
         action.deplacement(perso,HAUT);
-        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[0] == 2);
+        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[1] == 2);
         perso.setPosition(new int[]{1,0});
         action.deplacement(perso,BAS);
-        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[0] == 0);
+        assertTrue(perso.getPosition()[0] == 1 && perso.getPosition()[1] == 0);
         perso.setPosition(new int[]{2,1});
         action.deplacement(perso,GAUCHE);
-        assertTrue(perso.getPosition()[0] == 2 && perso.getPosition()[0] == 1);
+        assertTrue(perso.getPosition()[0] == 2 && perso.getPosition()[1] == 1);
     }
 
     @org.junit.jupiter.api.Test

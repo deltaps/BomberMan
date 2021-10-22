@@ -14,26 +14,26 @@ public class Action {
     }
     public void deplacement(Personnage joueur,int direction){
         switch(direction) {
-            case HAUT:
-                if(!(plateau.getPlateau()[joueur.getPosition()[0]-1][joueur.getPosition()[1]].getWall())){
-                    int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]-1};
-                    joueur.setPosition(nouvellePosition);
-                }
-                break;
-            case BAS:
-                if(!(plateau.getPlateau()[joueur.getPosition()[0]+1][joueur.getPosition()[1]].getWall())){
-                    int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]+1};
-                    joueur.setPosition(nouvellePosition);
-                }
-                break;
             case GAUCHE:
                 if(!(plateau.getPlateau()[joueur.getPosition()[0]][joueur.getPosition()[1]-1].getWall())){
-                    int[] nouvellePosition = new int[]{joueur.getPosition()[0]-1,joueur.getPosition()[1]};
+                    int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]-1};
                     joueur.setPosition(nouvellePosition);
                 }
                 break;
             case DROITE:
                 if(!(plateau.getPlateau()[joueur.getPosition()[0]][joueur.getPosition()[1]+1].getWall())){
+                    int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]+1};
+                    joueur.setPosition(nouvellePosition);
+                }
+                break;
+            case HAUT:
+                if(!(plateau.getPlateau()[joueur.getPosition()[0]-1][joueur.getPosition()[1]].getWall())){
+                    int[] nouvellePosition = new int[]{joueur.getPosition()[0]-1,joueur.getPosition()[1]};
+                    joueur.setPosition(nouvellePosition);
+                }
+                break;
+            case BAS:
+                if(!(plateau.getPlateau()[joueur.getPosition()[0]+1][joueur.getPosition()[1]].getWall())){
                     int[] nouvellePosition = new int[]{joueur.getPosition()[0]+1,joueur.getPosition()[1]};
                     joueur.setPosition(nouvellePosition);
                 }
