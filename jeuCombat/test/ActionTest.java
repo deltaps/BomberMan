@@ -1,5 +1,5 @@
-package model;
-
+import model.Action;
+import model.Plateau;
 import personnagesJeu.Personnage;
 
 import java.util.ArrayList;
