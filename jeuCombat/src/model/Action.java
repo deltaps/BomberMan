@@ -7,6 +7,10 @@ public class Action {
     protected final int BAS = 1;
     protected final int GAUCHE = 2;
     protected final int DROITE = 3;
+    protected final int HAUTDROITE = 4;
+    protected final int HAUTGAUCHE = 5;
+    protected final int BASDROITE = 6;
+    protected final int BASGAUCHE = 7;
     protected Plateau plateau;
 
     public Action(Plateau plateau) {
@@ -41,26 +45,62 @@ public class Action {
         }
     }
 
-    public void poseMine(Personnage joueur, int[] position) {
-        /*
+    public void poseMine(Personnage joueur,int direction) {
+        //TODO faire passer le test
+        int positionJoueurX = joueur.getPosition()[0];
+        int positionJoueurY = joueur.getPosition()[1];
+        switch (direction){
+            case HAUT:
+                if(this.plateau.getCase(positionJoueurX,positionJoueurY-1).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new LandMine(joueur));
+                }
+               break;
+            case HAUTDROITE:
+                if(this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new LandMine(joueur));
+                }
+                break;
+            case DROITE:
+                if(this.plateau.getCase(positionJoueurX+1,positionJoueurY).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new LandMine(joueur));
+                }
+                break;
+            case BASDROITE:
+                if(this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new LandMine(joueur));
+                }
+                break;
+            case BAS:
+                if(this.plateau.getCase(positionJoueurX,positionJoueurY+1).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new LandMine(joueur));
+                }
+                break;
+            case BASGAUCHE:
+                if(this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new LandMine(joueur));
+                }
+                break;
+            case GAUCHE:
+                if(this.plateau.getCase(positionJoueurX-1,positionJoueurY).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new LandMine(joueur));
+                }
+                break;
+            case HAUTGAUCHE:
+                if(this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).getWeapon() != null){
+                    joueur.addEnergie(-1);
+                    this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new LandMine(joueur));
+                }
+                break;
+        }
     }
-        int positionX = position[0];
-        int positionY = position[1];
-        int[] positionJoueur = joueur.getPosition();
-        int positionJoueurX = positionJoueur[0];
-        int positionJoueurY = positionJoueur[1];
-
-
-        if(positionJoueur == position
-        || (positionX+1 == positionJoueurX && positionY+1 == positionJoueurY)
-        || (positionX+1 == positionJoueurX && positionY-1 == positionJoueurY)
-        || (positionX-1 == positionJoueurX && positionY+1 == positionJoueurY)
-        || (positionX-1 == positionJoueurX && positionY-1 == positionJoueurY)) {
-            joueur.addEnergie(-1);
-            this.plateau.getCase(positionX, positionY).setWeapon(new LandMine(joueur, position, this.plateau));
-        */
-    }
-
+    //TODO faire le reste des action (faire les tests avant!)
     public void poseBombe(){
 
     }

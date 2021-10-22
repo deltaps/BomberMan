@@ -14,6 +14,7 @@ public class Case {
         this.wall = wall;
         this.capsule = capsule;
         this.id = 0;
+        this.weapon = null;
     }
 
     public boolean getWall(){
