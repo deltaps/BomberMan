@@ -17,7 +17,7 @@ public class Personnage {
 
     public Personnage(String name){
         this.name = name;
-        this.energie = 1;
+        this.energie = 20;
         this.munition = 5;
         this.position = new int[]{0, 0};
         this.bouclier = false;

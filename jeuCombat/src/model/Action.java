@@ -17,31 +17,37 @@ public class Action {
         this.plateau = plateau;
     }
     public void deplacement(Personnage joueur,int direction){
-        switch(direction) {
-            case GAUCHE:
-                if(!(plateau.getPlateau()[joueur.getPosition()[0]][joueur.getPosition()[1]-1].getWall())){
-                    int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]-1};
-                    joueur.setPosition(nouvellePosition);
-                }
-                break;
-            case DROITE:
-                if(!(plateau.getPlateau()[joueur.getPosition()[0]][joueur.getPosition()[1]+1].getWall())){
-                    int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]+1};
-                    joueur.setPosition(nouvellePosition);
-                }
-                break;
-            case HAUT:
-                if(!(plateau.getPlateau()[joueur.getPosition()[0]-1][joueur.getPosition()[1]].getWall())){
-                    int[] nouvellePosition = new int[]{joueur.getPosition()[0]-1,joueur.getPosition()[1]};
-                    joueur.setPosition(nouvellePosition);
-                }
-                break;
-            case BAS:
-                if(!(plateau.getPlateau()[joueur.getPosition()[0]+1][joueur.getPosition()[1]].getWall())){
-                    int[] nouvellePosition = new int[]{joueur.getPosition()[0]+1,joueur.getPosition()[1]};
-                    joueur.setPosition(nouvellePosition);
-                }
-                break;
+        if(joueur.getEnergie() >= 1){
+            switch(direction) {
+                case GAUCHE:
+                    if(!(plateau.getPlateau()[joueur.getPosition()[0]][joueur.getPosition()[1]-1].getWall())){
+                        int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]-1};
+                        joueur.setPosition(nouvellePosition);
+                        joueur.setEnergie(joueur.getEnergie()-1);
+                    }
+                    break;
+                case DROITE:
+                    if(!(plateau.getPlateau()[joueur.getPosition()[0]][joueur.getPosition()[1]+1].getWall())){
+                        int[] nouvellePosition = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]+1};
+                        joueur.setPosition(nouvellePosition);
+                        joueur.setEnergie(joueur.getEnergie()-1);
+                    }
+                    break;
+                case HAUT:
+                    if(!(plateau.getPlateau()[joueur.getPosition()[0]-1][joueur.getPosition()[1]].getWall())){
+                        int[] nouvellePosition = new int[]{joueur.getPosition()[0]-1,joueur.getPosition()[1]};
+                        joueur.setPosition(nouvellePosition);
+                        joueur.setEnergie(joueur.getEnergie()-1);
+                    }
+                    break;
+                case BAS:
+                    if(!(plateau.getPlateau()[joueur.getPosition()[0]+1][joueur.getPosition()[1]].getWall())){
+                        int[] nouvellePosition = new int[]{joueur.getPosition()[0]+1,joueur.getPosition()[1]};
+                        joueur.setPosition(nouvellePosition);
+                        joueur.setEnergie(joueur.getEnergie()-1);
+                    }
+                    break;
+            }
         }
     }
 
@@ -49,55 +55,73 @@ public class Action {
         //TODO faire passer le test
         int positionJoueurX = joueur.getPosition()[0];
         int positionJoueurY = joueur.getPosition()[1];
-        switch (direction){
-            case HAUT:
-                if(this.plateau.getCase(positionJoueurX,positionJoueurY-1).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new LandMine(joueur));
-                }
-               break;
-            case HAUTDROITE:
-                if(this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new LandMine(joueur));
-                }
-                break;
-            case DROITE:
-                if(this.plateau.getCase(positionJoueurX+1,positionJoueurY).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new LandMine(joueur));
-                }
-                break;
-            case BASDROITE:
-                if(this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new LandMine(joueur));
-                }
-                break;
-            case BAS:
-                if(this.plateau.getCase(positionJoueurX,positionJoueurY+1).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new LandMine(joueur));
-                }
-                break;
-            case BASGAUCHE:
-                if(this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new LandMine(joueur));
-                }
-                break;
-            case GAUCHE:
-                if(this.plateau.getCase(positionJoueurX-1,positionJoueurY).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new LandMine(joueur));
-                }
-                break;
-            case HAUTGAUCHE:
-                if(this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).getWeapon() != null){
-                    joueur.addEnergie(-1);
-                    this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new LandMine(joueur));
-                }
-                break;
+        if(joueur.getEnergie() >= 1){
+            switch (direction){
+                case HAUT:
+                    if(positionJoueurY != 0){
+                        if(!this.plateau.getCase(positionJoueurX,positionJoueurY-1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+                case HAUTDROITE:
+                    if(positionJoueurX != this.plateau.getTaille() && positionJoueurY != 0){
+                        if(!this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+                case DROITE:
+                    if(positionJoueurX != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX+1,positionJoueurY).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+                case BASDROITE:
+                    if(positionJoueurX != this.plateau.getTaille() && positionJoueurY != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+                case BAS:
+                    if(positionJoueurY != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX,positionJoueurY+1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+                case BASGAUCHE:
+                    if(positionJoueurX != 0 && positionJoueurY != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+                case GAUCHE:
+                    if(positionJoueurX != 0){
+                        if(!this.plateau.getCase(positionJoueurX-1,positionJoueurY).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+                case HAUTGAUCHE:
+                    if(positionJoueurX != 0 && positionJoueurY != 0){
+                        if(!this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new LandMine(joueur));
+                        }
+                    }
+                    break;
+            }
         }
     }
     //TODO faire le reste des action (faire les tests avant!)

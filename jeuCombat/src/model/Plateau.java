@@ -7,11 +7,13 @@ import java.util.*;
 public class Plateau {
     protected Case[][] plateau;
     protected List<Personnage> joueurs;
+    protected int taille;
 
     public Plateau(List<Personnage> joueurs, int taille){
         this.joueurs = new ArrayList<>();
         this.joueurs.addAll(joueurs);
         this.plateau = new Case[taille][taille];
+        this.taille = taille - 1;
         generePlateau(taille);
     }
 
@@ -82,6 +84,10 @@ public class Plateau {
 
     public Case[][] getPlateau() {
         return plateau;
+    }
+
+    public int getTaille(){
+        return this.taille;
     }
 
 
