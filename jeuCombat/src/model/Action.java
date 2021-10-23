@@ -198,7 +198,41 @@ public class Action {
     }
     //TODO faire le reste des action (faire les tests avant!)
     public void fire(Personnage joueur,int direction){
-
+        if(joueur.getMunition() > 0){
+            joueur.setMunition(joueur.getMunition() - 1);
+            switch (direction){
+                case HAUT:
+                    fireBis(joueur,new int[]{0,-1});
+                    break;
+                case BAS:
+                    fireBis(joueur,new int[]{0,1});
+                    break;
+                case GAUCHE:
+                    fireBis(joueur,new int[]{-1,0});
+                    break;
+                case DROITE:
+                    fireBis(joueur,new int[]{1,0});
+            }
+        }
+    }
+    public void fireBis(Personnage joueur, int[] direction){
+        boolean finBoucle = true;
+        int[] positionFire = new int[]{joueur.getPosition()[0],joueur.getPosition()[1]};
+        while(finBoucle){
+            positionFire[0] += direction[0];
+            positionFire[1] += direction[1];
+            if(!this.plateau.getPlateau()[positionFire[0]][positionFire[1]].getWall()){
+                for(Personnage joueurEnemie : this.plateau.getJoueurs()){
+                    if(joueurEnemie.getPosition()[0] == positionFire[0] && joueurEnemie.getPosition()[1] == positionFire[1]){
+                      joueurEnemie.addEnergie(-2);
+                      finBoucle = false;
+                  }
+              }
+          }
+          else{
+              finBoucle = false;
+          }
+        }
     }
 
     public void bouclier() {

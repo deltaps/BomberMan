@@ -109,5 +109,7 @@ public class Plateau {
         return this.taille;
     }
 
-
+    public List<Personnage> getJoueurs() {
+        return this.joueurs;
+    }
 }
