@@ -52,7 +52,6 @@ public class Action {
     }
 
     public void poseMine(Personnage joueur,int direction) {
-        //TODO faire passer le test
         int positionJoueurX = joueur.getPosition()[0];
         int positionJoueurY = joueur.getPosition()[1];
         if(joueur.getEnergie() >= 1){
@@ -124,11 +123,80 @@ public class Action {
             }
         }
     }
-    //TODO faire le reste des action (faire les tests avant!)
+
     public void poseBombe(Personnage joueur, int direction){
-
+        int positionJoueurX = joueur.getPosition()[0];
+        int positionJoueurY = joueur.getPosition()[1];
+        if(joueur.getEnergie() >= 1){
+            switch (direction){
+                case HAUT:
+                    if(positionJoueurY != 0){
+                        if(!this.plateau.getCase(positionJoueurX,positionJoueurY-1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+                case HAUTDROITE:
+                    if(positionJoueurX != this.plateau.getTaille() && positionJoueurY != 0){
+                        if(!this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+                case DROITE:
+                    if(positionJoueurX != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX+1,positionJoueurY).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+                case BASDROITE:
+                    if(positionJoueurX != this.plateau.getTaille() && positionJoueurY != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+                case BAS:
+                    if(positionJoueurY != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX,positionJoueurY+1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+                case BASGAUCHE:
+                    if(positionJoueurX != 0 && positionJoueurY != this.plateau.getTaille()){
+                        if(!this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+                case GAUCHE:
+                    if(positionJoueurX != 0){
+                        if(!this.plateau.getCase(positionJoueurX-1,positionJoueurY).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+                case HAUTGAUCHE:
+                    if(positionJoueurX != 0 && positionJoueurY != 0){
+                        if(!this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).getWall()){
+                            joueur.addEnergie(-1);
+                            this.plateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new Bomb(joueur));
+                        }
+                    }
+                    break;
+            }
+        }
     }
-
+    //TODO faire le reste des action (faire les tests avant!)
     public void fire() {
 
     }
