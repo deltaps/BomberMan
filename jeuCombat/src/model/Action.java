@@ -197,7 +197,7 @@ public class Action {
         }
     }
     //TODO faire le reste des action (faire les tests avant!)
-    public void fire() {
+    public void fire(Personnage joueur,int direction){
 
     }
 

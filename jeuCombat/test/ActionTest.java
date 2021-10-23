@@ -126,7 +126,30 @@ class ActionTest {
     }
 
     @org.junit.jupiter.api.Test
-    void fire() {
+    void fire() { //TODO Dans ce test je pars du principe que le tir fait perdre 2 d'énergie a un joueurs, et que tirer ne fait pas perdre d'énergie au tireur, il faut donc que l'on ce mette d'accord sur ça.
+        Personnage joueur = new Personnage("Jean");
+        int energieJ1 = joueur.getEnergie();
+        int munitionJ1 = joueur.getMunition();
+        Personnage joueur2 = new Personnage("Pierre");
+        int energieJ2 = joueur2.getEnergie();
+        int munitionJ2 = joueur2.getMunition();
+        List<Personnage> listeJoueurs = new ArrayList<>();
+        listeJoueurs.add(joueur);
+        listeJoueurs.add(joueur2);
+        Plateau plateau = new Plateau(listeJoueurs,5,true);
+        Action action = new Action(plateau);
+        Case[][] listeplateau = plateau.getPlateau();
+        plateau.getCase(2,2).setWall(true);
+        joueur.setPosition(new int[]{1,1});
+        joueur2.setPosition(new int[]{3,1});
+        action.fire(joueur,DROITE);
+        assertTrue(joueur.getMunition() == munitionJ1-1 && joueur2.getEnergie() == energieJ2-2);
+        joueur.setPosition(new int[]{1,2});
+        joueur2.setPosition(new int[]{3,2});
+        action.fire(joueur2,GAUCHE);
+        assertNotEquals(joueur.getEnergie(), energieJ1 - 1);
+        assertEquals(joueur2.getMunition(), munitionJ2 - 1);
+        //TODO diversifié le test (un peu trop minimaliste, ne regarde que si le tir marche a gauche, a droite, et a travers d'un mur)
     }
 
     @org.junit.jupiter.api.Test

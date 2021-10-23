@@ -10,11 +10,30 @@ public class Plateau {
     protected int taille;
 
     public Plateau(List<Personnage> joueurs, int taille){
+        if(taille < 7){
+            throw new IllegalArgumentException("Votre taille doit être supérieur ou égale à 7");
+        }
         this.joueurs = new ArrayList<>();
         this.joueurs.addAll(joueurs);
         this.plateau = new Case[taille][taille];
         this.taille = taille - 1;
         generePlateau(taille);
+    }
+
+    public Plateau(List<Personnage> joueurs, int taille, boolean test){
+        this.plateau = new Case[taille][taille];
+        for(int x = 0; x < taille; x++){
+            for(int y = 0; y < taille; y++){
+                if(x == 0 | y == 0 | x == taille-1 | y == taille-1){
+                    this.plateau[x][y] = new Case(true,false);
+                }
+                else{
+                    this.plateau[x][y] = new Case(false,false);
+                }
+            }
+        }
+        this.joueurs = new ArrayList<>();
+        this.joueurs.addAll(joueurs);
     }
 
     public Plateau(List<Personnage> joueurs, boolean test){
