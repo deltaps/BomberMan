@@ -92,6 +92,37 @@ class ActionTest {
     //TODO crée le restes des tests
     @org.junit.jupiter.api.Test
     void poseBombe() {
+        Personnage joueur = new Personnage("Jean");
+        int energieJoueur = joueur.getEnergie();
+        List<Personnage> liste = new ArrayList<>();
+        joueur.setPosition(new int[]{1,1});
+        liste.add(joueur);
+        Plateau plateau = new Plateau(liste,true);
+        Action action = new Action(plateau);
+        action.poseBombe(joueur,HAUT);
+        assertTrue(plateau.getCase(1,0).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-1);
+        action.poseBombe(joueur,HAUTDROITE);
+        assertFalse(plateau.getCase(2,0).getWeapon() instanceof LandMine);
+        assertTrue(joueur.getEnergie() == energieJoueur-1 );
+        action.poseBombe(joueur,DROITE);
+        assertTrue(plateau.getCase(2,1).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-2);
+        action.poseBombe(joueur,BASDROITE);
+        assertTrue(plateau.getCase(2,2).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-3);
+        action.poseBombe(joueur,BAS);
+        assertTrue(plateau.getCase(1,2).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-4);
+        action.poseBombe(joueur,BASGAUCHE);
+        assertFalse(plateau.getCase(0,2).getWeapon() instanceof Bomb);
+        assertTrue(joueur.getEnergie() == energieJoueur-4);
+        action.poseBombe(joueur,GAUCHE);
+        assertTrue(plateau.getCase(0,1).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-5);
+        action.poseBombe(joueur,HAUTGAUCHE);
+        assertTrue(plateau.getCase(0,0).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-6);
+        joueur.setEnergie(0);
+        Plateau plateau2 = new Plateau(liste,true);
+        Action action2 = new Action(plateau);
+        joueur.setPosition(new int[]{1,1});
+        action2.poseBombe(joueur,HAUT);
+        assertFalse(plateau2.getCase(1,0).getWeapon() instanceof Bomb);
     }
 
     @org.junit.jupiter.api.Test

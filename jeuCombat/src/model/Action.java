@@ -125,7 +125,7 @@ public class Action {
         }
     }
     //TODO faire le reste des action (faire les tests avant!)
-    public void poseBombe(){
+    public void poseBombe(Personnage joueur, int direction){
 
     }
 
