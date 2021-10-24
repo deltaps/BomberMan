@@ -154,6 +154,7 @@ class ActionTest {
     @org.junit.jupiter.api.Test
     void bouclier(){
         //TODO diversifié le test, on ne vérifie pas si le bouclié est annulé au bout d'un tour.
+        // Par contre j'ai vérifié l'action de tir dans ce test la (vue que j'ai implémenté la fonctionnalité de bouclier après).
         Personnage joueur = new Personnage("Jean");
         int energieJ1 = joueur.getEnergie();
         Personnage joueur2 = new Personnage("Pierre");

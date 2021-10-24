@@ -224,8 +224,13 @@ public class Action {
             if(!this.plateau.getPlateau()[positionFire[0]][positionFire[1]].getWall()){
                 for(Personnage joueurEnemie : this.plateau.getJoueurs()){
                     if(joueurEnemie.getPosition()[0] == positionFire[0] && joueurEnemie.getPosition()[1] == positionFire[1]){
-                      joueurEnemie.addEnergie(-2);
-                      finBoucle = false;
+                        if(!joueurEnemie.getBouclier()){
+                            joueurEnemie.addEnergie(-2);
+                            finBoucle = false;
+                        }
+                        else{
+                            finBoucle = false;
+                        }
                   }
               }
           }
@@ -236,8 +241,10 @@ public class Action {
     }
 
     public void bouclier(Personnage joueur){
-
-
+        if(joueur.getEnergie() > 1){
+            joueur.setBouclier(true);
+            joueur.addEnergie(-1);
+        }
     }
 
     public void neRienFaire() {
