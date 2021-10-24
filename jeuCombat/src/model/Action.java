@@ -235,7 +235,8 @@ public class Action {
         }
     }
 
-    public void bouclier() {
+    public void bouclier(Personnage joueur){
+
 
     }
 

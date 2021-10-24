@@ -139,7 +139,6 @@ class ActionTest {
         Plateau plateau = new Plateau(listeJoueurs,5,true);
         Action action = new Action(plateau);
         Case[][] listeplateau = plateau.getPlateau();
-        plateau.getCase(2,2).setWall(true);
         joueur.setPosition(new int[]{1,1});
         joueur2.setPosition(new int[]{3,1});
         action.fire(joueur,DROITE);
@@ -153,7 +152,26 @@ class ActionTest {
     }
 
     @org.junit.jupiter.api.Test
-    void bouclier() {
+    void bouclier(){
+        //TODO diversifié le test, on ne vérifie pas si le bouclié est annulé au bout d'un tour.
+        Personnage joueur = new Personnage("Jean");
+        int energieJ1 = joueur.getEnergie();
+        Personnage joueur2 = new Personnage("Pierre");
+        List<Personnage> listeJoueur = new ArrayList<>();
+        listeJoueur.add(joueur);
+        listeJoueur.add(joueur2);
+        Plateau plateau = new Plateau(listeJoueur,5,true);
+        plateau.getCase(2,2).setWall(true);
+        Action action = new Action(plateau);
+        assertFalse(joueur.getBouclier());
+        action.bouclier(joueur);
+        assertTrue(joueur.getBouclier());
+        assertFalse(joueur2.getBouclier());
+        assertEquals(joueur.getEnergie(), energieJ1 - 1);
+        joueur.setPosition(new int[]{1,1});
+        joueur2.setPosition(new int[]{3,1});
+        action.fire(joueur,DROITE);
+        assertEquals(joueur.getEnergie(), energieJ1 -1);
     }
 
     @org.junit.jupiter.api.Test
