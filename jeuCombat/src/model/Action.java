@@ -247,8 +247,8 @@ public class Action {
         }
     }
 
-    public void neRienFaire() {
-
+    public void neRienFaire(Personnage joueur){
+        joueur.addEnergie(1);
     }
 
 }

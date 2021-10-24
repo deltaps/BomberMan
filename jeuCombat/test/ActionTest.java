@@ -177,5 +177,17 @@ class ActionTest {
 
     @org.junit.jupiter.api.Test
     void neRienFaire() {
+        //TODO il faut que l'on ce mette d'accord sur combien d'energie le joueur gagne en ne faisant rien (dans mon cas je fait comme si il en gagné 1)
+        Personnage joueur = new Personnage("Jean");
+        int energieJoueur = joueur.getEnergie();
+        int posistionX = joueur.getPosition()[0];
+        int positionY = joueur.getPosition()[1];
+        List<Personnage> listePersonnage = new ArrayList<>();
+        listePersonnage.add(joueur);
+        Plateau plateau = new Plateau(listePersonnage,5,true);
+        Action action = new Action(plateau);
+        action.neRienFaire(joueur);
+        assertEquals(joueur.getEnergie(), energieJoueur + 1);
+        assertTrue(joueur.getPosition()[0] == posistionX && joueur.getPosition()[1] == positionY);
     }
 }
