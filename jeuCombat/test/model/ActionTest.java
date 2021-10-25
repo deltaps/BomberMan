@@ -1,11 +1,9 @@
 package model;
 
-import model.*;
 import personnagesJeu.Personnage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.JarOutputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,8 +24,8 @@ class ActionTest {
         int energiePerso = perso.getEnergie();
         List<Personnage> liste = new ArrayList<>();
         liste.add(perso);
-        Plateau plateau = new Plateau(liste,true);
-        Action action = new Action(plateau);
+        ConcretePlateau concretePlateau = new ConcretePlateau(liste,true);
+        Action action = new Action(concretePlateau);
         action.deplacement(perso,HAUT);
         assertTrue(perso.getPosition()[0] == 0 && perso.getPosition()[1] == 1 && perso.getEnergie() == energiePerso-1);
         perso.setPosition(new int[]{1,1});
@@ -64,32 +62,32 @@ class ActionTest {
         List<Personnage> liste = new ArrayList<>();
         joueur.setPosition(new int[]{1,1});
         liste.add(joueur);
-        Plateau plateau = new Plateau(liste,true);
-        Action action = new Action(plateau);
+        ConcretePlateau concretePlateau = new ConcretePlateau(liste,true);
+        Action action = new Action(concretePlateau);
         action.poseMine(joueur,HAUT);
-        assertTrue(plateau.getCase(1,0).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-1);
+        assertTrue(concretePlateau.getCase(1,0).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-1);
         action.poseMine(joueur,HAUTDROITE);
-        assertFalse(plateau.getCase(2,0).getWeapon() instanceof LandMine);
+        assertFalse(concretePlateau.getCase(2,0).getWeapon() instanceof LandMine);
         assertTrue(joueur.getEnergie() == energieJoueur-1 );
         action.poseMine(joueur,DROITE);
-        assertTrue(plateau.getCase(2,1).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-2);
+        assertTrue(concretePlateau.getCase(2,1).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-2);
         action.poseMine(joueur,BASDROITE);
-        assertTrue(plateau.getCase(2,2).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-3);
+        assertTrue(concretePlateau.getCase(2,2).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-3);
         action.poseMine(joueur,BAS);
-        assertTrue(plateau.getCase(1,2).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-4);
+        assertTrue(concretePlateau.getCase(1,2).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-4);
         action.poseMine(joueur,BASGAUCHE);
-        assertFalse(plateau.getCase(0,2).getWeapon() instanceof LandMine);
+        assertFalse(concretePlateau.getCase(0,2).getWeapon() instanceof LandMine);
         assertTrue(joueur.getEnergie() == energieJoueur-4);
         action.poseMine(joueur,GAUCHE);
-        assertTrue(plateau.getCase(0,1).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-5);
+        assertTrue(concretePlateau.getCase(0,1).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-5);
         action.poseMine(joueur,HAUTGAUCHE);
-        assertTrue(plateau.getCase(0,0).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-6);
+        assertTrue(concretePlateau.getCase(0,0).getWeapon() instanceof LandMine && joueur.getEnergie() == energieJoueur-6);
         joueur.setEnergie(0);
-        Plateau plateau2 = new Plateau(liste,true);
-        Action action2 = new Action(plateau);
+        ConcretePlateau concretePlateau2 = new ConcretePlateau(liste,true);
+        Action action2 = new Action(concretePlateau);
         joueur.setPosition(new int[]{1,1});
         action2.poseMine(joueur,HAUT);
-        assertFalse(plateau2.getCase(1,0).getWeapon() instanceof LandMine);
+        assertFalse(concretePlateau2.getCase(1,0).getWeapon() instanceof LandMine);
     }
     //TODO crée le restes des tests
     @org.junit.jupiter.api.Test
@@ -99,32 +97,32 @@ class ActionTest {
         List<Personnage> liste = new ArrayList<>();
         joueur.setPosition(new int[]{1,1});
         liste.add(joueur);
-        Plateau plateau = new Plateau(liste,true);
-        Action action = new Action(plateau);
+        ConcretePlateau concretePlateau = new ConcretePlateau(liste,true);
+        Action action = new Action(concretePlateau);
         action.poseBombe(joueur,HAUT);
-        assertTrue(plateau.getCase(1,0).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-1);
+        assertTrue(concretePlateau.getCase(1,0).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-1);
         action.poseBombe(joueur,HAUTDROITE);
-        assertFalse(plateau.getCase(2,0).getWeapon() instanceof LandMine);
+        assertFalse(concretePlateau.getCase(2,0).getWeapon() instanceof LandMine);
         assertTrue(joueur.getEnergie() == energieJoueur-1 );
         action.poseBombe(joueur,DROITE);
-        assertTrue(plateau.getCase(2,1).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-2);
+        assertTrue(concretePlateau.getCase(2,1).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-2);
         action.poseBombe(joueur,BASDROITE);
-        assertTrue(plateau.getCase(2,2).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-3);
+        assertTrue(concretePlateau.getCase(2,2).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-3);
         action.poseBombe(joueur,BAS);
-        assertTrue(plateau.getCase(1,2).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-4);
+        assertTrue(concretePlateau.getCase(1,2).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-4);
         action.poseBombe(joueur,BASGAUCHE);
-        assertFalse(plateau.getCase(0,2).getWeapon() instanceof Bomb);
+        assertFalse(concretePlateau.getCase(0,2).getWeapon() instanceof Bomb);
         assertTrue(joueur.getEnergie() == energieJoueur-4);
         action.poseBombe(joueur,GAUCHE);
-        assertTrue(plateau.getCase(0,1).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-5);
+        assertTrue(concretePlateau.getCase(0,1).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-5);
         action.poseBombe(joueur,HAUTGAUCHE);
-        assertTrue(plateau.getCase(0,0).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-6);
+        assertTrue(concretePlateau.getCase(0,0).getWeapon() instanceof Bomb && joueur.getEnergie() == energieJoueur-6);
         joueur.setEnergie(0);
-        Plateau plateau2 = new Plateau(liste,true);
-        Action action2 = new Action(plateau);
+        ConcretePlateau concretePlateau2 = new ConcretePlateau(liste,true);
+        Action action2 = new Action(concretePlateau);
         joueur.setPosition(new int[]{1,1});
         action2.poseBombe(joueur,HAUT);
-        assertFalse(plateau2.getCase(1,0).getWeapon() instanceof Bomb);
+        assertFalse(concretePlateau2.getCase(1,0).getWeapon() instanceof Bomb);
     }
 
     @org.junit.jupiter.api.Test
@@ -138,9 +136,9 @@ class ActionTest {
         List<Personnage> listeJoueurs = new ArrayList<>();
         listeJoueurs.add(joueur);
         listeJoueurs.add(joueur2);
-        Plateau plateau = new Plateau(listeJoueurs,5,true);
-        Action action = new Action(plateau);
-        Case[][] listeplateau = plateau.getPlateau();
+        ConcretePlateau concretePlateau = new ConcretePlateau(listeJoueurs,5,true);
+        Action action = new Action(concretePlateau);
+        Case[][] listeplateau = concretePlateau.getPlateau();
         joueur.setPosition(new int[]{1,1});
         joueur2.setPosition(new int[]{3,1});
         action.fire(joueur,DROITE);
@@ -163,9 +161,9 @@ class ActionTest {
         List<Personnage> listeJoueur = new ArrayList<>();
         listeJoueur.add(joueur);
         listeJoueur.add(joueur2);
-        Plateau plateau = new Plateau(listeJoueur,5,true);
-        plateau.getCase(2,2).setWall(true);
-        Action action = new Action(plateau);
+        ConcretePlateau concretePlateau = new ConcretePlateau(listeJoueur,5,true);
+        concretePlateau.getCase(2,2).setWall(true);
+        Action action = new Action(concretePlateau);
         assertFalse(joueur.getBouclier());
         action.bouclier(joueur);
         assertTrue(joueur.getBouclier());
@@ -186,8 +184,8 @@ class ActionTest {
         int positionY = joueur.getPosition()[1];
         List<Personnage> listePersonnage = new ArrayList<>();
         listePersonnage.add(joueur);
-        Plateau plateau = new Plateau(listePersonnage,5,true);
-        Action action = new Action(plateau);
+        ConcretePlateau concretePlateau = new ConcretePlateau(listePersonnage,5,true);
+        Action action = new Action(concretePlateau);
         action.neRienFaire(joueur);
         assertEquals(joueur.getEnergie(), energieJoueur + 1);
         assertTrue(joueur.getPosition()[0] == posistionX && joueur.getPosition()[1] == positionY);

@@ -19,24 +19,24 @@ public class Model {
     protected final int TIR = 11;
     protected final int BOUCLIER = 12;
     protected final int RIENFAIRE = 13;
-    protected Plateau plateau;
+    protected ConcretePlateau concretePlateau;
     protected Action action;
     protected Personnage currentPlayer;
     protected List<Personnage> listeJoueurs;
 
     public Model(int taillePlateau,List<Personnage> listeJoueurs){
         this.listeJoueurs = listeJoueurs;
-        this.plateau = new Plateau(this.listeJoueurs,taillePlateau);
-        this.action = new Action(this.plateau);
+        this.concretePlateau = new ConcretePlateau(this.listeJoueurs,taillePlateau);
+        this.action = new Action(this.concretePlateau);
         this.currentPlayer = this.listeJoueurs.get(0);
     }
 
-    public Plateau getPlateau() {
-        return plateau;
+    public ConcretePlateau getPlateau() {
+        return concretePlateau;
     }
 
-    public void setPlateau(Plateau plateau) {
-        this.plateau = plateau;
+    public void setPlateau(ConcretePlateau concretePlateau) {
+        this.concretePlateau = concretePlateau;
     }
 
     public Action getAction() {
@@ -86,6 +86,8 @@ public class Model {
     }
 
     public void action(int action, int direction){
+        //TODO, est-ce que c'est la méthode action du model qui vérifie si l'énergie est suffisante?
+        //si oui, qu'est-ce que l'on retourne?
         switch (action){
             case DEPLACEMENT:
                 this.action.deplacement(this.currentPlayer,direction);

@@ -34,4 +34,8 @@ public class Bomb implements Weapon{
     @Override
     public void detonation() {
     }
+    @Override
+    public Personnage getOwner(){
+        return this.owner;
+    }
 }
