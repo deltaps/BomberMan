@@ -37,6 +37,9 @@ public class ProxyPlateau implements Plateau{
 
     @Override
     public Weapon getArme(int x, int y,Personnage joueur){
+        if(this.plateau.getArme(x,y,joueur) == null){
+            return null;
+        }
         if(this.plateau.getArme(x,y,joueur).getOwner() == joueur){
             return this.plateau.getArme(x,y,joueur);
         }

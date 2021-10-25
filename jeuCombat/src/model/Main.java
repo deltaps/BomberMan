@@ -29,7 +29,7 @@ public class Main {
                     else if(plateauj1.getPlateau()[x][y].getWall()){
                         System.out.print("+ ");
                     }
-                    else if(plateauj1.getArme(x,y,joueurActuelle) != null){
+                    else if(plateauj1.getArme(y,x,joueurActuelle) != null){
                         System.out.print("A ");
                     }
                     else{
