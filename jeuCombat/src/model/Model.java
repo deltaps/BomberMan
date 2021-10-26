@@ -2,7 +2,9 @@ package model;
 
 import personnagesJeu.Personnage;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Model {
     protected final int HAUT = 0;
@@ -23,12 +25,14 @@ public class Model {
     protected Action action;
     protected Personnage currentPlayer;
     protected List<Personnage> listeJoueurs;
+    protected ProxyPlateau proxyPlateau;
 
     public Model(int taillePlateau,List<Personnage> listeJoueurs){
         this.listeJoueurs = listeJoueurs;
         this.concretePlateau = new ConcretePlateau(this.listeJoueurs,taillePlateau);
         this.action = new Action(this.concretePlateau);
         this.currentPlayer = this.listeJoueurs.get(0);
+        this.proxyPlateau = new ProxyPlateau(this.concretePlateau);
     }
 
     public ConcretePlateau getPlateau() {
@@ -37,6 +41,10 @@ public class Model {
 
     public void setPlateau(ConcretePlateau concretePlateau) {
         this.concretePlateau = concretePlateau;
+    }
+
+    public ProxyPlateau getProxyPlateau(){
+        return this.proxyPlateau;
     }
 
     public Action getAction() {
@@ -64,7 +72,17 @@ public class Model {
     }
 
     public boolean isOver(){
-        return true;
+        int nbJoueurs = this.listeJoueurs.size();
+        int nbJoueursDown = 0;
+        for(Personnage joueur : this.listeJoueurs){
+            if(joueur.getEnergie() <= 0){
+                nbJoueursDown++;
+            }
+        }
+        if(nbJoueursDown >= nbJoueurs - 1){
+            return true;
+        }
+        return false;
     }
 
     public void changePlayer(){
