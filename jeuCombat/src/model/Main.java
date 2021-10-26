@@ -4,6 +4,7 @@ import personnagesJeu.Personnage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
@@ -15,11 +16,25 @@ public class Main {
         listePerso.add(joueur2);
         listePerso.add(joueur1);
         Model jeu = new Model(8,listePerso);
-        jeu.action(10, jeu.BAS,false);
-        System.out.println(joueur2.getEnergie());
-        System.out.println(jeu);
-        jeu.changePlayer();
-        System.out.println(jeu);
+        Scanner scanner = new Scanner(System.in);
+        while(!jeu.isOver()){
+            System.out.println("Joueur : " + jeu.getCurrentPlayer());
+            System.out.println(jeu);
+            System.out.println("Quelle action faire?");
+            int action = scanner.nextInt();
+            System.out.println("Quelle direction?");
+            int direction = scanner.nextInt();
+            System.out.println("Visible ou non?");
+            int visible = scanner.nextInt();
+            if(visible == 0){
+                jeu.action(action,direction,true);
+                jeu.changePlayer();
+            }
+            else{
+                jeu.action(action,direction,false);
+                jeu.changePlayer();
+            }
+        }
         /*
         Personnage joueur = new Personnage("Jean");
         Personnage joueur2 = new Personnage("Pierre");
