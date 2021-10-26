@@ -7,6 +7,20 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args){
+        Personnage joueur1 = new Personnage("Aurlien");
+        Personnage joueur2 = new Personnage("Justice");
+        joueur2.setPosition(new int[]{1,1});
+        joueur1.setPosition(new int[]{3,3});
+        List<Personnage> listePerso = new ArrayList<>();
+        listePerso.add(joueur2);
+        listePerso.add(joueur1);
+        Model jeu = new Model(8,listePerso);
+        jeu.action(10, jeu.BAS,false);
+        System.out.println(joueur2.getEnergie());
+        System.out.println(jeu);
+        jeu.changePlayer();
+        System.out.println(jeu);
+        /*
         Personnage joueur = new Personnage("Jean");
         Personnage joueur2 = new Personnage("Pierre");
         List<Personnage> liste = new ArrayList<>();
@@ -38,5 +52,7 @@ public class Main {
                 }
             }
         }
+
+         */
     }
 }

@@ -27,9 +27,9 @@ public class Model {
     protected List<Personnage> listeJoueurs;
     protected ProxyPlateau proxyPlateau;
 
-    public Model(int taillePlateau,List<Personnage> listeJoueurs){
+    public Model(int taillePlateau, List<Personnage> listeJoueurs) {
         this.listeJoueurs = listeJoueurs;
-        this.concretePlateau = new ConcretePlateau(this.listeJoueurs,taillePlateau);
+        this.concretePlateau = new ConcretePlateau(this.listeJoueurs, taillePlateau);
         this.action = new Action(this.concretePlateau);
         this.currentPlayer = this.listeJoueurs.get(0);
         this.proxyPlateau = new ProxyPlateau(this.concretePlateau);
@@ -43,7 +43,7 @@ public class Model {
         this.concretePlateau = concretePlateau;
     }
 
-    public ProxyPlateau getProxyPlateau(){
+    public ProxyPlateau getProxyPlateau() {
         return this.proxyPlateau;
     }
 
@@ -71,56 +71,53 @@ public class Model {
         this.listeJoueurs = listeJoueurs;
     }
 
-    public boolean isOver(){
+    public boolean isOver() {
         int nbJoueurs = this.listeJoueurs.size();
         int nbJoueursDown = 0;
-        for(Personnage joueur : this.listeJoueurs){
-            if(joueur.getEnergie() <= 0){
+        for (Personnage joueur : this.listeJoueurs) {
+            if (joueur.getEnergie() <= 0) {
                 nbJoueursDown++;
             }
         }
-        if(nbJoueursDown >= nbJoueurs - 1){
+        if (nbJoueursDown >= nbJoueurs - 1) {
             return true;
         }
         return false;
     }
 
-    public void changePlayer(){
-        for(int n = 0; n < this.listeJoueurs.size() ; n++){
-            if(this.listeJoueurs.get(n) == this.currentPlayer){
-                System.out.println(this.listeJoueurs.get(n));
-                System.out.println(this.getCurrentPlayer());
-                if(n == this.listeJoueurs.size()-1){
+    public void changePlayer() {
+        for (int n = 0; n < this.listeJoueurs.size(); n++) {
+            if (this.listeJoueurs.get(n) == this.currentPlayer) {
+                if (n == this.listeJoueurs.size() - 1) {
                     this.currentPlayer = this.listeJoueurs.get(0);
                     break;
-                }
-                else{
-                    this.currentPlayer = this.listeJoueurs.get(n+1);
+                } else {
+                    this.currentPlayer = this.listeJoueurs.get(n + 1);
                     break;
                 }
             }
         }
     }
 
-    public void action(int action, int direction,boolean visible){
+    public void action(int action, int direction, boolean visible) {
         //TODO, est-ce que c'est la méthode action du model qui vérifie si l'énergie est suffisante?
         //si oui, qu'est-ce que l'on retourne?
-        switch (action){
+        switch (action) {
             case DEPLACEMENT:
-                this.action.deplacement(this.currentPlayer,direction);
-                if(this.concretePlateau.getArme(this.currentPlayer.getPosition()[0],this.currentPlayer.getPosition()[1],this.currentPlayer) != null){
-                    this.concretePlateau.getArme(this.currentPlayer.getPosition()[0],this.currentPlayer.getPosition()[1], this.currentPlayer).detonation();
-                    this.concretePlateau.getCase(this.currentPlayer.getPosition()[0],this.currentPlayer.getPosition()[1]).setWeapon(null);
+                this.action.deplacement(this.currentPlayer, direction);
+                if (this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer) != null) {
+                    this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer).detonation();
+                    this.concretePlateau.getCase(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1]).setWeapon(null);
                 }
                 break;
             case MINE:
-                this.action.poseMine(this.currentPlayer,direction,visible);
+                this.action.poseMine(this.currentPlayer, direction, visible);
                 break;
             case BOMBE:
-                this.action.poseBombe(this.currentPlayer,direction,visible);
+                this.action.poseBombe(this.currentPlayer, direction, visible);
                 break;
             case TIR:
-                this.action.fire(this.currentPlayer,direction);
+                this.action.fire(this.currentPlayer, direction);
                 break;
             case BOUCLIER:
                 this.action.bouclier(this.currentPlayer);
@@ -130,4 +127,25 @@ public class Model {
                 break;
         }
     }
+
+    @Override
+    public String toString() {
+        System.out.println("Affichage du plateau du joueur" + this.currentPlayer);
+        for (int x = 0; x < this.concretePlateau.getTaille()+1; x++) {
+            System.out.println("");
+            for (int y = 0; y < this.concretePlateau.getTaille()+1; y++) {
+                if (this.currentPlayer.getPosition()[0] == x && this.currentPlayer.getPosition()[1] == y) {
+                    System.out.print("J ");
+                } else if (this.proxyPlateau.getPlateau()[x][y].getWall()) {
+                    System.out.print("+ ");
+                } else if (this.proxyPlateau.getArme(y, x, this.currentPlayer) != null) {
+                    System.out.print("A ");
+                } else {
+                    System.out.print("0 ");
+                }
+            }
+        }
+        return "";
+    }
 }
+
