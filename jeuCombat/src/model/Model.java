@@ -100,21 +100,24 @@ public class Model {
                 }
             }
         }
-        System.out.println("-----------------------");
     }
 
-    public void action(int action, int direction){
+    public void action(int action, int direction,boolean visible){
         //TODO, est-ce que c'est la méthode action du model qui vérifie si l'énergie est suffisante?
         //si oui, qu'est-ce que l'on retourne?
         switch (action){
             case DEPLACEMENT:
                 this.action.deplacement(this.currentPlayer,direction);
+                if(this.concretePlateau.getArme(this.currentPlayer.getPosition()[0],this.currentPlayer.getPosition()[1],this.currentPlayer) != null){
+                    this.concretePlateau.getArme(this.currentPlayer.getPosition()[0],this.currentPlayer.getPosition()[1], this.currentPlayer).detonation();
+                    this.concretePlateau.getCase(this.currentPlayer.getPosition()[0],this.currentPlayer.getPosition()[1]).setWeapon(null);
+                }
                 break;
             case MINE:
-                this.action.poseMine(this.currentPlayer,direction);
+                this.action.poseMine(this.currentPlayer,direction,visible);
                 break;
             case BOMBE:
-                this.action.poseBombe(this.currentPlayer,direction);
+                this.action.poseBombe(this.currentPlayer,direction,visible);
                 break;
             case TIR:
                 this.action.fire(this.currentPlayer,direction);
@@ -127,5 +130,4 @@ public class Model {
                 break;
         }
     }
-
 }

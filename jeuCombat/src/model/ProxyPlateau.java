@@ -40,6 +40,9 @@ public class ProxyPlateau implements Plateau{
         if(this.plateau.getArme(x,y,joueur) == null){
             return null;
         }
+        if(this.plateau.getArme(x,y,joueur).isVisible()){
+            return this.plateau.getArme(x,y,joueur);
+        }
         if(this.plateau.getArme(x,y,joueur).getOwner() == joueur){
             return this.plateau.getArme(x,y,joueur);
         }

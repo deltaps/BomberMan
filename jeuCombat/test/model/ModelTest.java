@@ -61,6 +61,5 @@ class ModelTest {
 
     @Test
     void action() {
-
     }
 }

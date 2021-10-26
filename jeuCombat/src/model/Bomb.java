@@ -7,18 +7,23 @@ public class Bomb implements Weapon{
     protected Personnage owner;
     protected int compteARebourt;
     protected ConcretePlateau plateau;
+    protected boolean visible;
 
-    public Bomb(Personnage owner, ConcretePlateau plateau) {
+    public Bomb(Personnage owner, ConcretePlateau plateau,boolean visible) {
         this.owner = owner;
         this.compteARebourt=3;
         this.plateau = plateau;
+        this.visible = visible;
     }
 
     @Override
     public Personnage getOwner(){
         return this.owner;
     }
-
+    @Override
+    public boolean isVisible(){
+        return this.visible;
+    }
     @Override
     public void detonation() {
         this.compteARebourt--;
@@ -32,7 +37,7 @@ public class Bomb implements Weapon{
                 }
             }
         }
-        for(Personnage joueur : this.plateau.getJoueurs()) {
+        for(Personnage joueur : this.plateau.getJoueurs()){
             int joueurX = joueur.getPosition()[0];
             int joueurY = joueur.getPosition()[1];
             if(this == this.plateau.getCase(joueurX, joueurY).getWeapon()) {

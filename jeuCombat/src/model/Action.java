@@ -17,7 +17,7 @@ public class Action {
         this.concretePlateau = concretePlateau;
     }
     public void deplacement(Personnage joueur,int direction){
-        if(joueur.getEnergie() >= 1){
+        if(joueur.getEnergie() > 1){
             switch(direction) {
                 case GAUCHE:
                     if(!(concretePlateau.getPlateau()[joueur.getPosition()[0]][joueur.getPosition()[1]-1].getWall())){
@@ -51,16 +51,19 @@ public class Action {
         }
     }
 
-    public void poseMine(Personnage joueur,int direction) {
+    public void poseMine(Personnage joueur,int direction, boolean visible) {
         int positionJoueurX = joueur.getPosition()[0];
         int positionJoueurY = joueur.getPosition()[1];
-        if(joueur.getEnergie() >= 1){
+        if(joueur.getEnergie() > 1){
             switch (direction){
                 case HAUT:
                     if(positionJoueurY != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX,positionJoueurY-1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -68,7 +71,10 @@ public class Action {
                     if(positionJoueurX != this.concretePlateau.getTaille() && positionJoueurY != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY-1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -76,7 +82,10 @@ public class Action {
                     if(positionJoueurX != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -84,7 +93,10 @@ public class Action {
                     if(positionJoueurX != this.concretePlateau.getTaille() && positionJoueurY != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY+1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -92,7 +104,10 @@ public class Action {
                     if(positionJoueurY != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX,positionJoueurY+1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -100,7 +115,10 @@ public class Action {
                     if(positionJoueurX != 0 && positionJoueurY != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY+1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -108,7 +126,10 @@ public class Action {
                     if(positionJoueurX != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -116,7 +137,10 @@ public class Action {
                     if(positionJoueurX != 0 && positionJoueurY != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY-1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new LandMine(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new LandMine(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -124,16 +148,19 @@ public class Action {
         }
     }
 
-    public void poseBombe(Personnage joueur, int direction){
+    public void poseBombe(Personnage joueur, int direction,boolean visible){
         int positionJoueurX = joueur.getPosition()[0];
         int positionJoueurY = joueur.getPosition()[1];
-        if(joueur.getEnergie() >= 1){
+        if(joueur.getEnergie() > 1){
             switch (direction){
                 case HAUT:
                     if(positionJoueurY != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX,positionJoueurY-1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY-1).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -141,7 +168,10 @@ public class Action {
                     if(positionJoueurX != this.concretePlateau.getTaille() && positionJoueurY != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY-1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY-1).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -149,7 +179,10 @@ public class Action {
                     if(positionJoueurX != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -157,7 +190,10 @@ public class Action {
                     if(positionJoueurX != this.concretePlateau.getTaille() && positionJoueurY != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY+1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX+1,positionJoueurY+1).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -165,7 +201,10 @@ public class Action {
                     if(positionJoueurY != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX,positionJoueurY+1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX,positionJoueurY+1).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -173,7 +212,10 @@ public class Action {
                     if(positionJoueurX != 0 && positionJoueurY != this.concretePlateau.getTaille()){
                         if(!this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY+1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY+1).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -181,7 +223,10 @@ public class Action {
                     if(positionJoueurX != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
@@ -189,14 +234,16 @@ public class Action {
                     if(positionJoueurX != 0 && positionJoueurY != 0){
                         if(!this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY-1).getWall()){
                             joueur.addEnergie(-1);
-                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new Bomb(joueur, this.concretePlateau));
+                            if(visible){
+                                joueur.addEnergie(-1);
+                            }
+                            this.concretePlateau.getCase(positionJoueurX-1,positionJoueurY-1).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
                         }
                     }
                     break;
             }
         }
     }
-    //TODO faire le reste des action (faire les tests avant!)
     public void fire(Personnage joueur,int direction){
         if(joueur.getMunition() > 0){
             joueur.setMunition(joueur.getMunition() - 1);
