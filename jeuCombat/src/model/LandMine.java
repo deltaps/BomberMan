@@ -11,6 +11,7 @@ public class LandMine implements Weapon{
     public LandMine(Personnage owner, ConcretePlateau plateau,boolean visible) {
         this.owner = owner;
         this.visible = visible;
+        this.plateau = plateau;
     }
 
     @Override

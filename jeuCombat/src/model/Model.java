@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 public class Model {
-    protected final int HAUT = 0;
-    protected final int BAS = 1;
-    protected final int GAUCHE = 2;
-    protected final int DROITE = 3;
-    protected final int HAUTDROITE = 4;
-    protected final int HAUTGAUCHE = 5;
-    protected final int BASDROITE = 6;
-    protected final int BASGAUCHE = 7;
+    protected final int[] HAUT = new int[]{-1,0};
+    protected final int[] BAS = new int[]{1,0};
+    protected final int[] GAUCHE = new int[]{0,-1};
+    protected final int[] DROITE = new int[]{0,1};
+    protected final int[] HAUTDROITE = new int[]{-1,1};
+    protected final int[] HAUTGAUCHE = new int[]{-1,-1};
+    protected final int[] BASDROITE = new int[]{1,1};
+    protected final int[] BASGAUCHE = new int[]{1,-1};
     protected final int DEPLACEMENT = 8;
     protected final int MINE = 9;
     protected final int BOMBE = 10;
@@ -99,7 +99,7 @@ public class Model {
         }
     }
 
-    public void action(int action, int direction, boolean visible) {
+    public void action(int action, int[] direction, boolean visible) {
         //TODO, est-ce que c'est la méthode action du model qui vérifie si l'énergie est suffisante?
         //si oui, qu'est-ce que l'on retourne?
         switch (action) {
@@ -131,14 +131,23 @@ public class Model {
     @Override
     public String toString() {
         System.out.println("Affichage du plateau du joueur" + this.currentPlayer);
+        boolean danslejoueur = false;
         for (int x = 0; x < this.concretePlateau.getTaille()+1; x++) {
             System.out.println("");
             for (int y = 0; y < this.concretePlateau.getTaille()+1; y++) {
-                if (this.currentPlayer.getPosition()[0] == x && this.currentPlayer.getPosition()[1] == y) {
-                    System.out.print("J ");
-                } else if (this.proxyPlateau.getPlateau()[x][y].getWall()) {
+                danslejoueur = false;
+                for(Personnage joueur : this.listeJoueurs){
+                    if(joueur.getPosition()[0] == x && joueur.getPosition()[1] == y){
+                        System.out.print("J ");
+                        danslejoueur = true;
+                    }
+                }
+                if(danslejoueur){
+                    continue;
+                }
+                else if(this.proxyPlateau.getPlateau()[x][y].getWall()) {
                     System.out.print("+ ");
-                } else if (this.proxyPlateau.getArme(y, x, this.currentPlayer) != null) {
+                } else if (this.proxyPlateau.getArme(x, y, this.currentPlayer) != null) {
                     System.out.print("A ");
                 } else {
                     System.out.print("0 ");

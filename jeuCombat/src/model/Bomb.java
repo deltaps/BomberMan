@@ -81,4 +81,10 @@ public class Bomb implements Weapon{
             }
         }
     }
+    public void tictac(){
+        this.compteARebourt--;
+        if(this.compteARebourt == 0){
+            this.detonation();
+        }
+    }
 }

@@ -7,6 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    protected final int HAUT = 0;
+    protected final int BAS = 1;
+    protected final int GAUCHE = 2;
+    protected final int DROITE = 3;
+    protected final int HAUTDROITE = 4;
+    protected final int HAUTGAUCHE = 5;
+    protected final int BASDROITE = 6;
+    protected final int BASGAUCHE = 7;
     public static void main(String[] args){
         Personnage joueur1 = new Personnage("Aurlien");
         Personnage joueur2 = new Personnage("Justice");
@@ -23,6 +31,7 @@ public class Main {
             System.out.println("Quelle action faire?");
             int action = scanner.nextInt();
             System.out.println("Quelle direction?");
+            /*
             int direction = scanner.nextInt();
             System.out.println("Visible ou non?");
             int visible = scanner.nextInt();
@@ -34,6 +43,7 @@ public class Main {
                 jeu.action(action,direction,false);
                 jeu.changePlayer();
             }
+            */
         }
         /*
         Personnage joueur = new Personnage("Jean");

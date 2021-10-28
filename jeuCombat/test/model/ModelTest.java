@@ -60,6 +60,31 @@ class ModelTest {
     }
 
     @Test
-    void action() {
+    void testAction() {
+        Personnage j1 = new Personnage("Aurelien");
+        int energiej1 = j1.getEnergie();
+        Personnage j2 = new Personnage("Mathieu");
+        int energiej2 = j2.getEnergie();
+        ArrayList<Personnage> listePersonnage = new ArrayList<>();
+        listePersonnage.add(j1);
+        listePersonnage.add(j2);
+        Model model = new Model(8,listePersonnage);
+        //ConcretePlateau plateau = new ConcretePlateau(listePersonnage,5,true);
+        //model.setPlateau(plateau);
+        j1.setPosition(new int[]{2,3});
+        j2.setPosition(new int[]{3,2});
+        model.action(model.MINE, model.HAUTGAUCHE, true);
+        energiej1--;// Le j1 ce déplace de 1
+        model.changePlayer();
+        model.action(model.DEPLACEMENT, model.HAUT, true);
+        energiej2--;// Le j2 ce déplace de 1
+        model.action(model.DEPLACEMENT, model.HAUT, true);
+        energiej2--;// le j2 ce déplace de 1
+        energiej2--;// le j2 ce prend la bombe
+        energiej1--;// le j1 ce la prend aussi
+        assertTrue(model.getPlateau().getCase(1,2).getWeapon() == null);
+        assertTrue(j2.getEnergie() == energiej2);
+        assertTrue(j1.getEnergie() == energiej1);
+
     }
 }
