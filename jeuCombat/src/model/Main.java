@@ -24,7 +24,9 @@ public class Main {
         listePerso.add(joueur2);
         listePerso.add(joueur1);
         Model jeu = new Model(8,listePerso);
+        jeu.toString();
         Scanner scanner = new Scanner(System.in);
+        /*
         while(!jeu.isOver()){
             System.out.println("Joueur : " + jeu.getCurrentPlayer());
             System.out.println(jeu);
@@ -80,4 +82,3 @@ public class Main {
 
          */
     }
-}

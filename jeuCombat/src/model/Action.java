@@ -41,7 +41,7 @@ public class Action {
                 if(!visible){
                     joueur.addEnergie(-1);
                 }
-                this.concretePlateau.getCase(positionJoueurX + direction[0],positionJoueurY + direction[1]).setWeapon(new Bomb(joueur, this.concretePlateau,visible));
+                this.concretePlateau.getCase(positionJoueurX + direction[0],positionJoueurY + direction[1]).setWeapon(new Bomb(joueur, this.concretePlateau,visible,new int[]{positionJoueurX + direction[0],positionJoueurY + direction[1]}));
             }
         }
     }

@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Model {
+    //TODO Implémenter VUE-Controller avec les pattern
+    //TODO SaxParser
+    //TODO UML
+    //TODO RAPPORT
+    //TODO Positionnement joueuru aléatoire
+    //TODO Ajout pastille de vie
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
@@ -90,10 +96,27 @@ public class Model {
             if (this.listeJoueurs.get(n) == this.currentPlayer) {
                 if (n == this.listeJoueurs.size() - 1) {
                     this.currentPlayer = this.listeJoueurs.get(0);
+                    this.compteurBombe(this.currentPlayer);
                     break;
                 } else {
                     this.currentPlayer = this.listeJoueurs.get(n + 1);
+                    this.compteurBombe(this.currentPlayer);
                     break;
+                }
+            }
+        }
+    }
+
+    public void compteurBombe(Personnage player){
+        for(Case[] casex : this.concretePlateau.getPlateau()){
+            for(Case casey : casex){
+                if(casey.getWeapon() != null){
+                    if (casey.getWeapon() instanceof Bomb && casey.getWeapon().getOwner() == player){
+                        ((Bomb) casey.getWeapon()).tictac();
+                        if(((Bomb) casey.getWeapon()).getCompteARebourt() == 0){
+                            casey.setWeapon(null);
+                        }
+                    }
                 }
             }
         }
@@ -118,12 +141,15 @@ public class Model {
                 break;
             case TIR:
                 this.action.fire(this.currentPlayer, direction);
+                this.changePlayer();
                 break;
             case BOUCLIER:
                 this.action.bouclier(this.currentPlayer);
+                this.changePlayer();
                 break;
             case RIENFAIRE:
                 this.action.neRienFaire(this.currentPlayer);
+                this.changePlayer();
                 break;
         }
     }
