@@ -95,6 +95,7 @@ public class ConcretePlateau implements Plateau{
             }
         }
     }
+
     public void generePlateauv1(int taille){
         for(int x = 0; x < taille; x++){
             for(int y = 0; y < taille; y++){

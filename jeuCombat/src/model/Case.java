@@ -5,15 +5,12 @@ import personnagesJeu.Personnage;
 public class Case {
 
     protected boolean wall;
-    protected boolean capsule;
+    protected boolean pastille;
     protected Weapon weapon;
-    protected int id;// Pour la génération aléatoire
 
-
-    public Case(boolean wall, boolean capsule){
+    public Case(boolean wall, boolean pastille){
         this.wall = wall;
-        this.capsule = capsule;
-        this.id = 0;
+        this.pastille = pastille;
         this.weapon = null;
     }
 
@@ -21,8 +18,8 @@ public class Case {
         return this.wall;
     }
 
-    public boolean getCapsule() {
-        return this.capsule;
+    public boolean getPastille() {
+        return this.pastille;
     }
 
     public Weapon getWeapon() {
@@ -33,8 +30,8 @@ public class Case {
         this.wall = wall;
     }
 
-    public void setCapsule(boolean capsule) {
-        this.capsule = capsule;
+    public void setPastille(boolean pastille) {
+        this.pastille = pastille;
     }
 
     public void setWeapon(Weapon weapon) {

@@ -4,6 +4,14 @@
  */
 package personnagesJeu;
 
+import org.xml.sax.*;
+import org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.helpers.ParserFactory;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.*;
+
 /**
  *
  * @author pronost
@@ -17,12 +25,33 @@ public class Personnage {
 
     public Personnage(String name){
         this.name = name;
-        this.energie = 20;
-        this.munition = 5;
+        xmlRead();
         this.position = new int[]{0, 0};
         this.bouclier = false;
     }
 
+    public void xmlRead(){
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        try {
+            SAXParser saxParser = factory.newSAXParser();
+            Handler handler = new Handler();
+
+            saxParser.parse("..\\personnageJeu\\src\\personnagesJeu\\personnage-option.xml", handler);
+            String munition = "";
+            for(char character : handler.getMunition()){
+                munition+= character;
+            }
+            String energie = "";
+            for(char character : handler.getEnergie()){
+                energie+= character;
+            }
+            this.munition = Integer.parseInt(munition);
+            this.energie = Integer.parseInt(energie);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     @Override
     public String toString() {
         return "Nom du personnage : " + this.name;

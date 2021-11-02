@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args){
         Personnage joueur1 = new Personnage("Aurlien");
         Personnage joueur2 = new Personnage("Justice");
+        System.out.println(joueur1.getMunition());
         List<Personnage> listePerso = new ArrayList<>();
         listePerso.add(joueur2);
         listePerso.add(joueur1);
