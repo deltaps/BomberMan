@@ -62,37 +62,47 @@ public class ConcretePlateau implements Plateau{
                 }
             }
         }
-        int nbMur = (taille - 6) / 3;
-        nbMur *= nbMur;
-        nbMur += 2;
-        Random random = new Random();
-        while(nbMur != 0){
-            int i = random.nextInt(taille-6);
-            i += 3;
-            int j = random.nextInt(taille-6);
-            j += 3;
-            int r = random.nextInt(2);
-            if(r == 0){
-                if(!this.plateau[i-2][j].getWall() & !this.plateau[i-2][j-1].getWall() & !this.plateau[i-2][j+1].getWall() & !this.plateau[i][j].getWall()
-                        & !this.plateau[i+1][j].getWall() & !this.plateau[i+2][j].getWall()
-                        & !this.plateau[i+2][j-1].getWall() & !this.plateau[i+2][j+1].getWall()){
-                    this.plateau[i][j].setWall(true);
-                    this.plateau[i-1][j].setWall(true);
-                    this.plateau[i+1][j].setWall(true);
-                    nbMur--;
+        int nbMur = taille*3;
+        ArrayList<Integer> listeBlock = new ArrayList<>();
+        while(nbMur != 0) {
+            int x = new Random().nextInt(taille-3);
+            x += 2;
+            int y = new Random().nextInt(taille-3);
+            y += 2;
+            int oui = new Random().nextInt(2);
+            if(oui == 1){
+                if(!(listeBlock.contains((taille*x)+y) || listeBlock.contains((taille*x)+y+1) || listeBlock.contains((taille*x)+y-1))){
+                    this.plateau[x][y].setWall(true);
+                    this.plateau[x][y + 1].setWall(true);
+                    this.plateau[x][y - 1].setWall(true);
+                    listeBlock.add(((x - 1) * taille) + (y - 2));
+                    listeBlock.add(((x - 1) * taille) + (y + 2));
+                    listeBlock.add((x * taille) + (y - 2));
+                    listeBlock.add((x * taille) + (y + 2));
+                    listeBlock.add(((x + 1) * taille) + (y - 2));
+                    listeBlock.add(((x + 1) * taille) + (y + 2));
                 }
             }
             else{
-                if(!this.plateau[i-1][j-2].getWall() & !this.plateau[i][j-2].getWall() &
-                        !this.plateau[i][j-1].getWall() & !this.plateau[i+1][j-1].getWall() & !this.plateau[i][j].getWall()
-                        & !this.plateau[i][j+1].getWall() & !this.plateau[i-1][j+2].getWall() & !this.plateau[i][j+2].getWall()
-                        & !this.plateau[i+1][j+2].getWall()){
-                    this.plateau[i][j].setWall(true);
-                    this.plateau[i][j-1].setWall(true);
-                    this.plateau[i][j+1].setWall(true);
-                    nbMur--;
+                if(!(listeBlock.contains((taille*x)+y) || listeBlock.contains((taille*(x+1))+y) || listeBlock.contains((taille*(x-1))+y))) {
+                    this.plateau[x][y].setWall(true);
+                    this.plateau[x - 1][y].setWall(true);
+                    this.plateau[x + 1][y].setWall(true);
+                    listeBlock.add(((x - 2) * taille) + (y - 1));
+                    listeBlock.add(((x - 2) * taille) + y);
+                    listeBlock.add(((x - 2) * taille) + (y + 1));
+                    listeBlock.add(((x - 1) * taille) + (y - 1));
+                    listeBlock.add(((x - 1) * taille) + (y + 1));
+                    listeBlock.add((x * taille) + (y + 1));
+                    listeBlock.add((x * taille) + (y - 1));
+                    listeBlock.add(((x + 1) * taille) + (y - 1));
+                    listeBlock.add(((x + 1) * taille) + (y + 1));
+                    listeBlock.add(((x + 2) * taille) + (y - 1));
+                    listeBlock.add(((x + 2) * taille) + y);
+                    listeBlock.add(((x + 2) * taille) + (y + 1));
                 }
             }
+            nbMur--;
         }
     }
 

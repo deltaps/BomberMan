@@ -22,7 +22,7 @@ public class Main {
         List<Personnage> listePerso = new ArrayList<>();
         listePerso.add(joueur2);
         listePerso.add(joueur1);
-        Model jeu = new Model(10,listePerso);
+        Model jeu = new Model(30,listePerso);
         jeu.toString();
         //Scanner scanner = new Scanner(System.in);
         /*

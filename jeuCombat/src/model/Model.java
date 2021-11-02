@@ -12,7 +12,7 @@ public class Model {
     //TODO SaxParser
     //TODO UML
     //TODO RAPPORT
-    //TODO Ajout pastille de vie
+    //TODO Ajout pastille de energie
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
