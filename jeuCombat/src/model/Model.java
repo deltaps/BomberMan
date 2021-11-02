@@ -5,13 +5,13 @@ import personnagesJeu.Personnage;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Model {
     //TODO Implémenter VUE-Controller avec les pattern
     //TODO SaxParser
     //TODO UML
     //TODO RAPPORT
-    //TODO Positionnement joueuru aléatoire
     //TODO Ajout pastille de vie
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
@@ -34,8 +34,21 @@ public class Model {
     protected ProxyPlateau proxyPlateau;
 
     public Model(int taillePlateau, List<Personnage> listeJoueurs) {
+        this.concretePlateau = new ConcretePlateau(listeJoueurs, taillePlateau);
+        Random random = new Random();
+        for(Personnage joueur : listeJoueurs){
+            while(true){
+                int x = random.nextInt(taillePlateau-3);
+                x++;
+                int y = random.nextInt(taillePlateau-3);
+                y++;
+                if(!this.concretePlateau.getPlateau()[x][y].getWall()){
+                    joueur.setPosition(new int[]{x,y});
+                    break;
+                }
+            }
+        }
         this.listeJoueurs = listeJoueurs;
-        this.concretePlateau = new ConcretePlateau(this.listeJoueurs, taillePlateau);
         this.action = new Action(this.concretePlateau);
         this.currentPlayer = this.listeJoueurs.get(0);
         this.proxyPlateau = new ProxyPlateau(this.concretePlateau);

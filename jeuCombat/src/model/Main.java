@@ -18,14 +18,12 @@ public class Main {
     public static void main(String[] args){
         Personnage joueur1 = new Personnage("Aurlien");
         Personnage joueur2 = new Personnage("Justice");
-        joueur2.setPosition(new int[]{1,1});
-        joueur1.setPosition(new int[]{3,3});
         List<Personnage> listePerso = new ArrayList<>();
         listePerso.add(joueur2);
         listePerso.add(joueur1);
-        Model jeu = new Model(8,listePerso);
+        Model jeu = new Model(10,listePerso);
         jeu.toString();
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         /*
         while(!jeu.isOver()){
             System.out.println("Joueur : " + jeu.getCurrentPlayer());
