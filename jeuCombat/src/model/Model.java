@@ -9,7 +9,6 @@ import java.util.Random;
 
 public class Model {
     //TODO Implémenter VUE-Controller avec les pattern
-    //TODO SaxParser
     //TODO UML
     //TODO RAPPORT
     //TODO Ajout pastille de energie
