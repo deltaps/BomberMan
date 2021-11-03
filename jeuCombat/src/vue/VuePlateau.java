@@ -5,8 +5,9 @@ import model.ConcretePlateau;
 import model.Case;
 import model.Bomb;
 import model.LandMine;
-
+import vue.Image;
 import java.awt.*;
+import java.awt.Image;
 
 
 public class VuePlateau extends JPanel {
@@ -35,10 +36,10 @@ public class VuePlateau extends JPanel {
         //afficheJoueurs()
     }
 
-    public Rectangle afficheCase(Graphics g, Case casse, int x, int y) {
-        //if(casse.getWall() == true) {
-        //afficheMur(g, x, y);
-        //}
+    public void afficheCase(Graphics g, Case casse, int x, int y) {
+        if(casse.getWall() == true) {
+        g.drawImage(Image.ImageMur, x, y, null);
+        }
         //if(casse.getPastille() == true) {
             //affichePastille(g, x, y);
         //}
@@ -46,7 +47,6 @@ public class VuePlateau extends JPanel {
 
         //}
         Rectangle rectangle = new Rectangle(x, y, 10, 10);
-        return null;
     }
 
 
