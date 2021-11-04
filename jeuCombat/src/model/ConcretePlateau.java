@@ -65,10 +65,10 @@ public class ConcretePlateau implements Plateau{
         int nbMur = taille*3;
         ArrayList<Integer> listeBlock = new ArrayList<>();
         while(nbMur != 0) {
-            int x = new Random().nextInt(taille-3);
-            x += 2;
-            int y = new Random().nextInt(taille-3);
-            y += 2;
+            int x = new Random().nextInt(taille-6);
+            x += 3;
+            int y = new Random().nextInt(taille-6);
+            y += 3;
             int oui = new Random().nextInt(2);
             if(oui == 1){
                 if(!(listeBlock.contains((taille*x)+y) || listeBlock.contains((taille*x)+y+1) || listeBlock.contains((taille*x)+y-1))){
