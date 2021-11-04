@@ -29,14 +29,14 @@ public class Image {
         try {
             // Lis l'image (dans l'exemple de la ligne ci-dessous l'image de la case) dans le ficher images.
             // La variable delimiteur est faite pour pouvoir charger les images dans le fichier, pour les utilisateurs de Windows ou de Linux.
-            imageCase = ImageIO.read(new File("../images" + delimiteur + "case.png"));
-            imageMur = ImageIO.read(new File("../images" + delimiteur + "mur.png"));
-            imageJoueur = ImageIO.read(new File("../images" + delimiteur + "joueur.png"));
-            imageEnnemie = ImageIO.read(new File("../images" + delimiteur + "joueurEnnemi.png"));
-            imageBombe = ImageIO.read(new File("../images" + delimiteur + "bombe.png"));
-            imagePastille = ImageIO.read(new File("../images" + delimiteur + "pastille.png"));
-            imageMine = ImageIO.read(new File("../images" + delimiteur + "mine.png"));
-            imageTir = ImageIO.read(new File("../images" + delimiteur + "tir.png"));
+            imageCase = ImageIO.read(new File("./images" + delimiteur + "case.png"));
+            imageMur = ImageIO.read(new File("./images" + delimiteur + "mur.png"));
+            imageJoueur = ImageIO.read(new File("./images" + delimiteur + "joueur.png"));
+            imageEnnemie = ImageIO.read(new File("./images" + delimiteur + "joueurEnnemi.png"));
+            imageBombe = ImageIO.read(new File("./images" + delimiteur + "bomb.png"));
+            imagePastille = ImageIO.read(new File("./images" + delimiteur + "pastille.png"));
+            imageMine = ImageIO.read(new File("./images" + delimiteur + "mine.png"));
+            imageTir = ImageIO.read(new File("./images" + delimiteur + "tir.png"));
         }
         catch (IOException e) {
             e.printStackTrace();

@@ -20,7 +20,7 @@ public class VuePlateau extends JPanel {
 
     public VuePlateau (AdapterFromConcretePlateauToTableModel adaptedPlateau, Personnage joueurCourant, List<Personnage> listeJoueurs) {
 
-        this.setSize(new Dimension(480, 480));
+        this.setSize(new Dimension(800, 800));
 
         this.adaptedPlateau = adaptedPlateau;
         this.joueurCourant = joueurCourant;
@@ -33,15 +33,14 @@ public class VuePlateau extends JPanel {
         int tailleLigne = this.adaptedPlateau.getRowCount();
         int tailleColonne = this.adaptedPlateau.getColumnCount();
 
-        for(int x = 0; x < tailleLigne; x++) {
-            for(int y = 0; y < tailleColonne; y++) {
-                Case square = this.adaptedPlateau.getValueAt(x, y);
+        for(int x = 0; x <= tailleLigne; x++) {
+            for(int y = 0; y <= tailleColonne; y++) {
+                Case square = this.adaptedPlateau.getValueAt(y, x);
 
                 afficheCase(g,x, y);
                 afficheMur(g, square, x, y);
                 afficheWeapon(g, square, x, y);
                 affichePastille(g, square, x, y);
-                //affiche
             }
         }
         afficheJoueur(g);
@@ -80,10 +79,10 @@ public class VuePlateau extends JPanel {
             int y = X.getPosition()[1];
 
             if(X == this.joueurCourant) {
-                g.drawImage(Image.imageJoueur, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
+                g.drawImage(Image.imageJoueur, y * TAILLE_IMAGE, x * TAILLE_IMAGE, null);
             }
             else {
-                g.drawImage(Image.imageEnnemie, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
+                g.drawImage(Image.imageEnnemie, y * TAILLE_IMAGE, x * TAILLE_IMAGE, null);
             }
         }
     }

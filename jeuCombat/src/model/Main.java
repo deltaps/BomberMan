@@ -23,7 +23,7 @@ public class Main {
         List<Personnage> listePerso = new ArrayList<>();
         listePerso.add(joueur2);
         listePerso.add(joueur1);
-        Model jeu = new Model(30,listePerso);
+        Model jeu = new Model(10,listePerso);
 
         Vue vue = new Vue(joueur1, jeu.getPlateau());
 
