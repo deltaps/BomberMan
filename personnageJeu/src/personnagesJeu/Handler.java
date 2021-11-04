@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public class Handler extends DefaultHandler {
     protected ArrayList<Character> munition;
     protected ArrayList<Character> energie;
+    protected ArrayList<Character> pastille;
     protected String update;
     public Handler(){
         this.munition = new ArrayList<>();
         this.energie = new ArrayList<>();
+        this.pastille = new ArrayList<>();
     }
     /*
     public void startDocument(){
@@ -44,7 +46,6 @@ public class Handler extends DefaultHandler {
             case "energie":
                 this.energie = liste;
                 break;
-
         }
     }
 

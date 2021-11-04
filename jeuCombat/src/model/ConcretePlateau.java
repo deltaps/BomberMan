@@ -104,6 +104,19 @@ public class ConcretePlateau implements Plateau{
             }
             nbMur--;
         }
+        for(int i = 0; i < taille / 2; i++){
+            int x = new Random().nextInt(taille-2);
+            int y = new Random().nextInt(taille-2);
+            x++;
+            y++;
+            while(this.plateau[x][y].getWall()){
+                x = new Random().nextInt(taille-2);
+                y = new Random().nextInt(taille-2);
+                x++;
+                y++;
+            }
+            this.plateau[x][y].setPastille(true);
+        }
     }
 
     public void generePlateauv1(int taille){

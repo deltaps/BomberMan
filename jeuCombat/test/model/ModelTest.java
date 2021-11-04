@@ -116,5 +116,18 @@ class ModelTest {
         model.changePlayer();
         model.changePlayer();
         assertTrue(model.getPlateau().getCase(1,2).getWeapon() == null);
+
+        Personnage Mathieu = new Personnage("Mathieu");
+        int energieMathieu = Mathieu.getEnergie();
+        List<Personnage> listePersonnage2 = new ArrayList<>();
+        listePersonnage2.add(Mathieu);
+        Model model2 = new Model(10,listePersonnage2);
+        Plateau plateauTeste = new ConcretePlateau(listePersonnage2,10,true); //bah alors ça fail les tests
+        plateauTeste.getPlateau()[1][1].setPastille(true);
+        Mathieu.setPosition(new int[]{1,2});
+        model2.action(model.DEPLACEMENT, model.GAUCHE,true);
+        assertTrue(plateauTeste.getPlateau()[1][1].getPastille());
+        assertEquals(Mathieu.getEnergie(), energieMathieu + 4);
+        assertFalse(plateauTeste.getPlateau()[1][1].getPastille());
     }
 }

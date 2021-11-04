@@ -36,10 +36,8 @@ public class VuePlateau extends JPanel {
         //afficheJoueurs()
     }
 
-    public void afficheCase(Graphics g, Case casse, int x, int y) {
-        if(casse.getWall() == true) {
-        g.drawImage(Image.ImageMur, x, y, null);
-        }
+    public void afficheCase(Graphics g, int x, int y) {
+        g.drawImage(Image.imageCase, x, y, null);
         //if(casse.getPastille() == true) {
             //affichePastille(g, x, y);
         //}

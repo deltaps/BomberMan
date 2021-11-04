@@ -32,7 +32,7 @@ public class Model {
     protected List<Personnage> listeJoueurs;
     protected ProxyPlateau proxyPlateau;
 
-    public Model(int taillePlateau, List<Personnage> listeJoueurs) {
+    public Model(int taillePlateau, List<Personnage> listeJoueurs){
         this.concretePlateau = new ConcretePlateau(listeJoueurs, taillePlateau);
         Random random = new Random();
         for(Personnage joueur : listeJoueurs){
@@ -134,7 +134,7 @@ public class Model {
         }
     }
 
-    public void action(int action, int[] direction, boolean visible) {
+    public void action(int action, int[] direction, boolean visible){
         //TODO, est-ce que c'est la méthode action du model qui vérifie si l'énergie est suffisante?
         //si oui, qu'est-ce que l'on retourne?
         switch (action) {
@@ -143,6 +143,10 @@ public class Model {
                 if (this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer) != null) {
                     this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer).detonation();
                     this.concretePlateau.getCase(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1]).setWeapon(null);
+                }
+                if(this.concretePlateau.getPlateau()[this.currentPlayer.getPosition()[0]][this.currentPlayer.getPosition()[1]].getPastille()){
+                    this.currentPlayer.addEnergie(5);
+                    this.concretePlateau.getPlateau()[this.currentPlayer.getPosition()[0]][this.currentPlayer.getPosition()[1]].setPastille(false);
                 }
                 break;
             case MINE:

@@ -16,7 +16,7 @@ public class MainClass {
     public static void main(String[] args) {
         Personnage perso = new Personnage("Jean");
         System.out.println(perso);
-
+        System.out.println(perso.getEnergie());
     }
     
 }
