@@ -135,8 +135,6 @@ public class Model {
     }
 
     public void action(int action, int[] direction, boolean visible){
-        //TODO, est-ce que c'est la méthode action du model qui vérifie si l'énergie est suffisante?
-        //si oui, qu'est-ce que l'on retourne?
         switch (action) {
             case DEPLACEMENT:
                 this.action.deplacement(this.currentPlayer, direction);

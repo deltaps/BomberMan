@@ -8,6 +8,7 @@ public class Action {
     public Action(ConcretePlateau concretePlateau) {
         this.concretePlateau = concretePlateau;
     }
+
     public void deplacement(Personnage joueur,int[] direction){
         if(joueur.getEnergie() > 1){
             if(!(concretePlateau.getPlateau()[joueur.getPosition()[0]+direction[0]][joueur.getPosition()[1]+direction[1]].getWall())){

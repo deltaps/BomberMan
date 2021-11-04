@@ -52,6 +52,7 @@ public class ConcretePlateau implements Plateau{
     }
 
     public void generePlateau(int taille){
+        // Placement des contour des murs
         for(int x = 0; x < taille; x++){
             for(int y = 0; y < taille; y++){
                 if(x == 0 | y == 0 | x == taille-1 | y == taille-1){
@@ -62,6 +63,7 @@ public class ConcretePlateau implements Plateau{
                 }
             }
         }
+        //Placement des murs aléatoires.
         int nbMur = taille*3;
         ArrayList<Integer> listeBlock = new ArrayList<>();
         while(nbMur != 0) {
@@ -104,6 +106,7 @@ public class ConcretePlateau implements Plateau{
             }
             nbMur--;
         }
+        // Placement des pastille d'énergie
         for(int i = 0; i < taille / 2; i++){
             int x = new Random().nextInt(taille-2);
             int y = new Random().nextInt(taille-2);
