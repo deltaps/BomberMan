@@ -5,6 +5,7 @@ import personnagesJeu.Personnage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import vue.Vue;
 
 public class Main {
     protected final int HAUT = 0;
@@ -23,6 +24,9 @@ public class Main {
         listePerso.add(joueur2);
         listePerso.add(joueur1);
         Model jeu = new Model(30,listePerso);
+
+        Vue vue = new Vue(joueur1, jeu.getPlateau());
+
         jeu.toString();
         //Scanner scanner = new Scanner(System.in);
         /*

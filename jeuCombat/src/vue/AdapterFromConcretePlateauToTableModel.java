@@ -1,5 +1,6 @@
 package vue;
 
+import model.Case;
 import model.ConcretePlateau;
 import observer.ModelListener;
 
@@ -24,7 +25,7 @@ public class AdapterFromConcretePlateauToTableModel extends AbstractTableModel i
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
+    public Case getValueAt(int rowIndex, int columnIndex) {
         return this.concretePlateau.getCase(rowIndex, columnIndex);
     }
 

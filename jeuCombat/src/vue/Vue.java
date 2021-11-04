@@ -10,12 +10,14 @@ import personnagesJeu.Personnage;
 public class Vue extends JFrame {
     private Personnage joueur;
     private AdapterFromConcretePlateauToTableModel adaptedPlateau;
-    private List<Personnage> joueurs;
+    private List<Personnage> listejoueurs;
 
     public Vue(Personnage joueur, ConcretePlateau concretePlateau) {
         this.joueur = joueur;
         this.adaptedPlateau = new AdapterFromConcretePlateauToTableModel(concretePlateau);
-        this.joueurs = concretePlateau.getJoueurs();
+        this.listejoueurs = concretePlateau.getJoueurs();
+
+        this.GUI();
     }
 
     public void GUI() {
@@ -41,6 +43,7 @@ public class Vue extends JFrame {
         this.setContentPane(contentPane);
         this.pack();
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
 
