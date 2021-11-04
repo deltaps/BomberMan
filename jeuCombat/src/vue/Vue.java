@@ -28,8 +28,8 @@ public class Vue extends JFrame {
         JPanel contentPane = new JPanel();
         contentPane.setLayout(null);
 
-        //VuePlateau plateau = new VuePlateau(this.adaptedPlateau)
-        //contentPane.add(plateau);
+        VuePlateau plateau = new VuePlateau(this.adaptedPlateau, this.joueur, this.listejoueurs);
+        contentPane.add(plateau);
 
         //ListeJoueurs listeJoueurs = new ListeJoueurs(this.joueurs)
         //contentPane.add(listeJoueurs);

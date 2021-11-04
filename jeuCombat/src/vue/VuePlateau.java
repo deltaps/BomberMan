@@ -55,7 +55,7 @@ public class VuePlateau extends JPanel {
         //if(square.getWeapon instanceof Bomb) {
 
         //}
-        Rectangle rectangle = new Rectangle(x, y, 10, 10);
+
     }
 
     public void afficheMur(Graphics g, Case square, int x, int y) {
