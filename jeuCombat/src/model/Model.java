@@ -191,7 +191,11 @@ public class Model {
                     System.out.print("+ ");
                 } else if (this.proxyPlateau.getArme(x, y, this.currentPlayer) != null) {
                     System.out.print("A ");
-                } else {
+                }
+                else if(this.concretePlateau.getPastille(x,y)){
+                    System.out.print("P ");
+                }
+                else {
                     System.out.print("0 ");
                 }
             }

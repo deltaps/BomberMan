@@ -184,4 +184,8 @@ public class ConcretePlateau implements Plateau{
     public Weapon getArme(int x,int y,Personnage joueur){
         return this.plateau[x][y].getWeapon();
     }
+
+    public boolean getPastille(int x, int y){
+        return this.plateau[x][y].getPastille();
+    }
 }
