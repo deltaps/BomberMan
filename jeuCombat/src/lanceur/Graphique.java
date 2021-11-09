@@ -1,6 +1,5 @@
 package lanceur;
 
-import controller.Controller;
 import model.Model;
 import personnagesJeu.Personnage;
 
@@ -27,8 +26,7 @@ public class Graphique {
         listePerso.add(joueur1);
         Model jeu = new Model(10,listePerso);
 
-        Controller controller = new Controller(jeu);
-        //Vue vue = new Vue(joueur1, jeu.getPlateau());
+        Vue vue = new Vue(joueur1, jeu.getPlateau());
 
         jeu.toString();
 

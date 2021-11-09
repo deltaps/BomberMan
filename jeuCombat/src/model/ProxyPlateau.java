@@ -50,4 +50,8 @@ public class ProxyPlateau implements Plateau{
             return null;
         }
     }
+    @Override
+    public Case getCase(int x, int y){
+        return this.plateau.getCase(x,y);
+    }
 }

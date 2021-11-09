@@ -11,4 +11,5 @@ public interface Plateau {
     public int getTaille();
     public List<Personnage> getJoueurs();
     public Weapon getArme(int x,int y,Personnage joueur);
+    public Case getCase(int x,int y);
 }
