@@ -29,5 +29,6 @@ public class Graphique {
         Vue vue = new Vue(joueur1, jeu.getPlateau());
 
         jeu.toString();
+
         }
 }

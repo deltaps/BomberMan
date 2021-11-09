@@ -18,7 +18,7 @@ public class VuePlateau extends JPanel {
 
     private final int TAILLE_IMAGE = 40;
 
-    public VuePlateau (AdapterFromConcretePlateauToTableModel adaptedPlateau, Personnage joueurCourant, List<Personnage> listeJoueurs) {
+    public VuePlateau (AdapterFromConcretePlateauToTableModel adaptedPlateau, Personnage joueurCourant, List<Personnage> listeJoueurs){
 
         this.setSize(new Dimension(800, 800));
 

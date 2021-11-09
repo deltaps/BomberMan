@@ -1,5 +1,7 @@
 package model;
 
+import observer.AbstractListenableModel;
+import observer.ModelListener;
 import personnagesJeu.Personnage;
 
 import java.util.HashMap;
@@ -7,11 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class Model {
+public class Model extends AbstractListenableModel {
     //TODO Implémenter VUE-Controller avec les pattern
     //TODO UML
     //TODO RAPPORT
-    //TODO Ajout pastille de energie
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
@@ -166,6 +167,7 @@ public class Model {
                 this.changePlayer();
                 break;
         }
+        fireChange();
     }
 
     @Override
@@ -200,5 +202,6 @@ public class Model {
         }
         return "";
     }
+
 }
 
