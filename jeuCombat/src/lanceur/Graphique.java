@@ -27,7 +27,11 @@ public class Graphique {
         Model jeu = new Model(10,listePerso);
 
         Vue vue = new Vue(joueur1, jeu.getProxyPlateau());
-
+        for(int i = 0; i< 10; i++){
+            for(int j =0; j < 10; j++){
+                System.out.println(jeu.getPlateau().getCase(i,j));
+            }
+        }
         jeu.toString();
 
         }
