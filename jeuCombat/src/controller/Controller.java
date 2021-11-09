@@ -13,7 +13,7 @@ public class Controller {
         this.model = model;
 
         //for(Personnage joueur : model.getListeJoueurs()) {
-            this.vue = new Vue(model.getCurrentPlayer(), model.getPlateau()); // Affiche la fenêtre du jeu.
+            this.vue = new Vue(model.getCurrentPlayer(), model.getProxyPlateau()); // Affiche la fenêtre du jeu.
         //}
 
         EcouteurSouris souris = new EcouteurSouris(this);

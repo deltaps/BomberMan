@@ -12,13 +12,13 @@ import java.util.List;
 
 public class VuePlateau extends JPanel {
 
-    public AdapterFromConcretePlateauToTableModel adaptedPlateau;
+    public AdapterFromProxyPlateauToTableModel adaptedPlateau;
     public List<Personnage> listeJoueurs;
     public Personnage joueurCourant;
 
     private final int TAILLE_IMAGE = 40;
 
-    public VuePlateau (AdapterFromConcretePlateauToTableModel adaptedPlateau, Personnage joueurCourant, List<Personnage> listeJoueurs){
+    public VuePlateau (AdapterFromProxyPlateauToTableModel adaptedPlateau, Personnage joueurCourant, List<Personnage> listeJoueurs){
 
         this.setSize(new Dimension(800, 800));
 

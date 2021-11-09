@@ -5,17 +5,18 @@ import java.awt.*;
 import java.util.List;
 
 import model.ConcretePlateau;
+import model.ProxyPlateau;
 import personnagesJeu.Personnage;
 
 public class Vue extends JFrame {
     private Personnage joueur;
-    private AdapterFromConcretePlateauToTableModel adaptedPlateau;
+    private AdapterFromProxyPlateauToTableModel adaptedPlateau;
     private List<Personnage> listejoueurs;
 
-    public Vue(Personnage joueur, ConcretePlateau concretePlateau) {
+    public Vue(Personnage joueur, ProxyPlateau proxyPlateau) {
         this.joueur = joueur;
-        this.adaptedPlateau = new AdapterFromConcretePlateauToTableModel(concretePlateau);
-        this.listejoueurs = concretePlateau.getJoueurs();
+        this.adaptedPlateau = new AdapterFromProxyPlateauToTableModel(proxyPlateau);
+        this.listejoueurs = proxyPlateau.getJoueurs();
 
         this.GUI();
     }
@@ -24,7 +25,7 @@ public class Vue extends JFrame {
         this.setTitle("Bomberman");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(800, 800));
-        
+
         JPanel contentPane = new JPanel();
         contentPane.setLayout(null);
 
@@ -39,7 +40,7 @@ public class Vue extends JFrame {
 
         //ActionJoueur actionJoueur = new ActionJoueur();
         //contentPane.add(actionJoueur);
-        
+
         this.setContentPane(contentPane);
         this.pack();
         this.setVisible(true);

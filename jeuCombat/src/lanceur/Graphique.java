@@ -26,7 +26,7 @@ public class Graphique {
         listePerso.add(joueur1);
         Model jeu = new Model(10,listePerso);
 
-        Vue vue = new Vue(joueur1, jeu.getPlateau());
+        Vue vue = new Vue(joueur1, jeu.getProxyPlateau());
 
         jeu.toString();
 
