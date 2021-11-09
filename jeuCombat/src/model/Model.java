@@ -42,7 +42,7 @@ public class Model extends AbstractListenableModel {
                 x++;
                 int y = random.nextInt(taillePlateau-3);
                 y++;
-                if(!this.concretePlateau.getPlateau()[x][y].getWall()){
+                if(!this.concretePlateau.getPlateau()[x][y].getWall() && !this.concretePlateau.getPastille(x,y)){
                     joueur.setPosition(new int[]{x,y});
                     break;
                 }

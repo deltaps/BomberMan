@@ -9,7 +9,20 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ModelTest {
-
+    @Test
+    void constructeur(){
+        Personnage j1 = new Personnage("Mathieu");
+        Personnage j2 = new Personnage("Aurélien");
+        List<Personnage> listePersonnage = new ArrayList<>();
+        listePersonnage.add(j1);
+        listePersonnage.add(j2);
+        for(int i = 0; i<1000; i++){
+            Model model = new Model(10,listePersonnage);
+            ConcretePlateau plateau = model.getPlateau();
+            assertFalse(plateau.getPastille(j1.getPosition()[0],j1.getPosition()[1]));
+            assertFalse(plateau.getPastille(j2.getPosition()[0],j2.getPosition()[1]));
+        }
+    }
     @Test
     void isOver() {
         Personnage j1 = new Personnage("Mathieu");
