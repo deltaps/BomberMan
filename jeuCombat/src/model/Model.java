@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class Model extends AbstractListenableModel {
+public class Model extends AbstractListenableModel implements ModelListener {
     //TODO Implémenter VUE-Controller avec les pattern
     //TODO UML
     //TODO RAPPORT
@@ -54,6 +54,11 @@ public class Model extends AbstractListenableModel {
         this.action = new Action(this.concretePlateau);
         this.currentPlayer = this.listeJoueurs.get(0);
         this.proxyPlateau = new ProxyPlateau(this.concretePlateau);
+
+        //this.addModelListener(concretePlateau); //----------------------------
+        //this.addModelListener(proxyPlateau); //----------------------------
+        //concretePlateau.addModelListener(this); //----------------------------
+        //proxyPlateau.addModelListener(this); //----------------------------
     }
 
     public ConcretePlateau getPlateau() {
@@ -120,6 +125,7 @@ public class Model extends AbstractListenableModel {
                 }
             }
         }
+        fireChange(); //----------------------------
     }
 
     public void compteurBombe(Personnage player){
@@ -169,7 +175,7 @@ public class Model extends AbstractListenableModel {
                 this.changePlayer();
                 break;
         }
-        fireChange();
+        fireChange(); //----------------------------
     }
 
     @Override
@@ -205,5 +211,10 @@ public class Model extends AbstractListenableModel {
         return "";
     }
 
+    @Override
+    public void somethingHasChanged(Object source) {
+        fireChange();
+        System.out.println("yu");
+    }
 }
 

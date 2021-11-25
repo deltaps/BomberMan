@@ -1,10 +1,11 @@
 package model;
 
+import observer.AbstractListenableModel;
 import personnagesJeu.Personnage;
 
 import java.util.List;
 
-public class ProxyPlateau implements Plateau{
+public class ProxyPlateau extends AbstractListenableModel implements Plateau {
     protected ConcretePlateau plateau;
     public ProxyPlateau(ConcretePlateau plateau){
         this.plateau = plateau;
@@ -53,5 +54,11 @@ public class ProxyPlateau implements Plateau{
     @Override
     public Case getCase(int x, int y){
         return this.plateau.getCase(x,y);
+    }
+
+    @Override
+    public void somethingHasChanged(Object source) {
+        fireChange();
+        System.out.println("ui");
     }
 }

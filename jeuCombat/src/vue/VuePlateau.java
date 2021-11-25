@@ -1,10 +1,8 @@
 package vue;
 
 import javax.swing.*;
-import model.ConcretePlateau;
-import model.Case;
-import model.Bomb;
-import model.LandMine;
+
+import model.*;
 import personnagesJeu.Personnage;
 import java.awt.*;
 import java.util.List;
@@ -12,30 +10,28 @@ import java.util.List;
 
 public class VuePlateau extends JPanel {
 
-    public AdapterFromProxyPlateauToTableModel adaptedPlateau;
-    public List<Personnage> listeJoueurs;
+    public Plateau plateau;
     public Personnage joueurCourant;
 
     private final int TAILLE_IMAGE = 40;
 
-    public VuePlateau (AdapterFromProxyPlateauToTableModel adaptedPlateau, Personnage joueurCourant, List<Personnage> listeJoueurs){
+    public VuePlateau (Plateau plateau, Personnage joueurCourant){
 
         this.setSize(new Dimension(800, 800));
 
-        this.adaptedPlateau = adaptedPlateau;
+        this.plateau = plateau;
         this.joueurCourant = joueurCourant;
-        this.listeJoueurs = listeJoueurs;
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int tailleLigne = this.adaptedPlateau.getRowCount();
-        int tailleColonne = this.adaptedPlateau.getColumnCount();
+        int tailleLigne = this.plateau.getTaille();
+        int tailleColonne = this.plateau.getTaille();
 
         for(int x = 0; x <= tailleLigne; x++) {
             for(int y = 0; y <= tailleColonne; y++) {
-                Case square = this.adaptedPlateau.getValueAt(y, x);
+                Case square = this.plateau.getCase(y, x);
 
                 afficheCase(g,x, y);
                 afficheMur(g, square, x, y);
@@ -74,7 +70,8 @@ public class VuePlateau extends JPanel {
     }
 
     public void afficheJoueur(Graphics g) {
-        for (Personnage X : this.listeJoueurs) {
+        List<Personnage> listeJoueurs = this.plateau.getJoueurs();
+        for (Personnage X : listeJoueurs) {
             int x = X.getPosition()[0];
             int y = X.getPosition()[1];
 

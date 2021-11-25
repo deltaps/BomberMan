@@ -1,5 +1,6 @@
 package lanceur;
 
+import controller.Controller;
 import model.Model;
 import personnagesJeu.Personnage;
 
@@ -26,7 +27,8 @@ public class Graphique {
         listePerso.add(joueur1);
         Model jeu = new Model(10,listePerso);
 
-        Vue vue = new Vue(joueur1, jeu.getProxyPlateau());
+        //Vue vue = new Vue(joueur1, jeu.getProxyPlateau());
+        Controller controller = new Controller(jeu);
         for(int i = 0; i< 10; i++){
             for(int j =0; j < 10; j++){
                 System.out.println(jeu.getPlateau().getCase(i,j));

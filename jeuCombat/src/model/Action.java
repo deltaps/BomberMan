@@ -1,5 +1,7 @@
 package model;
 
+import observer.AbstractListenableModel;
+import observer.ModelListener;
 import personnagesJeu.Personnage;
 
 public class Action {
@@ -85,5 +87,4 @@ public class Action {
     public void neRienFaire(Personnage joueur){
         joueur.addEnergie(1);
     }
-
 }

@@ -1,10 +1,12 @@
 package model;
 
+import observer.AbstractListenableModel;
+import observer.ModelListener;
 import personnagesJeu.Personnage;
 
 import java.util.List;
 
-public interface Plateau {
+public interface Plateau extends ModelListener {
     public void generePlateau(int taille);
     public void ajoutMur(int x, int y);
     public Case[][] getPlateau();

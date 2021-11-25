@@ -1,5 +1,6 @@
 package model;
 
+import observer.AbstractListenableModel;
 import personnagesJeu.Personnage;
 
 public class Case {

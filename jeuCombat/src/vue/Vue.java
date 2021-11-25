@@ -5,18 +5,26 @@ import java.awt.*;
 import java.util.List;
 
 import model.ConcretePlateau;
+import model.Plateau;
 import model.ProxyPlateau;
+import observer.ModelListener;
 import personnagesJeu.Personnage;
 
-public class Vue extends JFrame {
+public class Vue extends JFrame implements ModelListener {
+    private ProxyPlateau plateau;
     private Personnage joueur;
-    private AdapterFromProxyPlateauToTableModel adaptedPlateau;
-    private List<Personnage> listejoueurs;
+    //private List<Personnage> listejoueurs;
 
-    public Vue(Personnage joueur, ProxyPlateau proxyPlateau) {
+    private VuePlateau vuePlateau;
+
+    public Vue(Personnage joueur, ProxyPlateau plateau) {
         this.joueur = joueur;
-        this.adaptedPlateau = new AdapterFromProxyPlateauToTableModel(proxyPlateau);
-        this.listejoueurs = proxyPlateau.getJoueurs();
+        this.plateau = plateau;
+
+        plateau.addModelListener(this);
+        //this.listejoueurs = plateau.getJoueurs();
+
+        this.vuePlateau = new VuePlateau(plateau, this.joueur);
 
         this.GUI();
     }
@@ -29,8 +37,8 @@ public class Vue extends JFrame {
         JPanel contentPane = new JPanel();
         contentPane.setLayout(null);
 
-        VuePlateau plateau = new VuePlateau(this.adaptedPlateau, this.joueur, this.listejoueurs);
-        contentPane.add(plateau);
+
+        contentPane.add(this.vuePlateau);
 
         //ListeJoueurs listeJoueurs = new ListeJoueurs(this.joueurs)
         //contentPane.add(listeJoueurs);
@@ -48,4 +56,9 @@ public class Vue extends JFrame {
     }
 
 
+    @Override
+    public void somethingHasChanged(Object source) {
+        setVisible(true);
+        System.out.println("ui");
+    }
 }

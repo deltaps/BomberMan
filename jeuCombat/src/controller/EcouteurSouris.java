@@ -22,10 +22,8 @@ public class EcouteurSouris extends MouseAdapter {
         int numeroCaseLigne = getNumeroCaseLigne(ySouris); // Variable correspondant à l'ordonnée de la case cliquée, qui est la même sur les deux tableaux car ils sont placés à coté l'un de l'autre.
         //Ces trois variables sont très utiles pour travailler avec les valeurs réelles du model, la position de la souris exacte ne sera donc plus utile.
 
-        System.out.println(numeroCaseColonne);
-        System.out.println(numeroCaseLigne);
+        System.out.println(numeroCaseColonne + "," + numeroCaseLigne);
         if(numeroCaseColonne > -1 && numeroCaseLigne > -1) {
-            System.out.println("ui");
             this.controller.deplace();
         }
     }
