@@ -43,7 +43,6 @@ public class Model extends AbstractListenableModel implements ModelListener {
                 int y = random.nextInt(taillePlateau-3);
                 y++;
                 if(!this.concretePlateau.getPlateau()[x][y].getWall() && !this.concretePlateau.getPastille(x,y)){
-                    // foreach -> listeJoueurs -> getPosition()
                     //TODO faire en sorte qu'un joueur ne puisse pas ce placer sur un autre joueur.
                     joueur.setPosition(new int[]{x,y});
                     break;
