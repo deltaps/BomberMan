@@ -1,27 +1,27 @@
 package controller;
 
 import model.Model;
-import observer.AbstractListenableModel;
-import observer.ModelListener;
 import vue.Vue;
 
 import java.util.Arrays;
 
-public class Controller extends AbstractListenableModel implements ModelListener {
+public class Controller {
 
     private Model model;
     private Vue vue;
 
     public Controller(Model model) {
         this.model = model;
-        model.addModelListener(this);
 
         //for(Personnage joueur : model.getListeJoueurs()) {
-            this.vue = new Vue(model.getCurrentPlayer(), model.getProxyPlateau()); // Affiche la fenêtre du jeu.
+        Vue view = new Vue(model.getCurrentPlayer(), model.getProxyPlateau()); // Affiche la fenêtre du jeu.
+        model.addModelListener(view);
+
+
         //}
 
         EcouteurSouris souris = new EcouteurSouris(this);
-        vue.addMouseListener(souris);
+        view.addMouseListener(souris);
     }
 
     public void deplace() {
@@ -29,10 +29,5 @@ public class Controller extends AbstractListenableModel implements ModelListener
         this.model.action(8, new int[]{-1,0}, false);
         System.out.println(Arrays.toString(model.getCurrentPlayer().getPosition()));
 
-    }
-
-    @Override
-    public void somethingHasChanged(Object source) {
-        this.vue.update();
     }
 }

@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 import model.ProxyPlateau;
+import observer.ModelListener;
 import personnagesJeu.Personnage;
 
-public class Vue extends JFrame {
+public class Vue extends JFrame implements ModelListener {
     private ProxyPlateau plateau;
     private Personnage joueur;
 
@@ -44,10 +45,12 @@ public class Vue extends JFrame {
         setContentPane(contentPane);
         pack();
         setVisible(true);
+        setResizable(false);
         setLocationRelativeTo(null);
     }
 
-    public void update() {
+    @Override
+    public void somethingHasChanged(Object source) {
         repaint();
     }
 }

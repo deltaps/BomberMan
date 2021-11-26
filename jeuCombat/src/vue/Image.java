@@ -42,4 +42,14 @@ public class Image {
             e.printStackTrace();
         }
     }
+    public static void resize(int width, int height) {
+        /*imageCase = (BufferedImage) imageCase.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+        imageMur = new BufferedImage(width, height, imageMur.getType());
+        imageJoueur = new BufferedImage(width, height, imageJoueur.getType());
+        imageEnnemie = new BufferedImage(width, height, imageEnnemie.getType());
+        imageBombe = new BufferedImage(width, height, imageBombe.getType());
+        imagePastille = new BufferedImage(width, height, imagePastille.getType());
+        imageMine = new BufferedImage(width, height, imageMine.getType());
+        imageTir = new BufferedImage(width, height, imageTir.getType());*/
+    }
 }
