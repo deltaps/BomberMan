@@ -6,7 +6,7 @@ import personnagesJeu.Personnage;
 
 import java.util.*;
 
-public class ConcretePlateau extends AbstractListenableModel implements Plateau {
+public class ConcretePlateau implements Plateau {
     protected Case[][] plateau;
     protected List<Personnage> joueurs;
     protected int taille;
@@ -153,10 +153,5 @@ public class ConcretePlateau extends AbstractListenableModel implements Plateau 
 
     public boolean getPastille(int x, int y){
         return this.plateau[x][y].getPastille();
-    }
-
-    @Override
-    public void somethingHasChanged(Object source) {
-        fireChange();
     }
 }

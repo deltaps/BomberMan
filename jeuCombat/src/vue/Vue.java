@@ -10,7 +10,7 @@ import model.ProxyPlateau;
 import observer.ModelListener;
 import personnagesJeu.Personnage;
 
-public class Vue extends JFrame implements ModelListener {
+public class Vue extends JFrame {
     private ProxyPlateau plateau;
     private Personnage joueur;
     //private List<Personnage> listejoueurs;
@@ -20,9 +20,6 @@ public class Vue extends JFrame implements ModelListener {
     public Vue(Personnage joueur, ProxyPlateau plateau) {
         this.joueur = joueur;
         this.plateau = plateau;
-
-        plateau.addModelListener(this);
-        //this.listejoueurs = plateau.getJoueurs();
 
         this.vuePlateau = new VuePlateau(plateau, this.joueur);
 
@@ -49,16 +46,13 @@ public class Vue extends JFrame implements ModelListener {
         //ActionJoueur actionJoueur = new ActionJoueur();
         //contentPane.add(actionJoueur);
 
-        this.setContentPane(contentPane);
-        this.pack();
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
+        setContentPane(contentPane);
+        pack();
+        setVisible(true);
+        setLocationRelativeTo(null);
     }
 
-
-    @Override
-    public void somethingHasChanged(Object source) {
-        setVisible(true);
-        System.out.println("ui");
+    public void update() {
+        repaint();
     }
 }

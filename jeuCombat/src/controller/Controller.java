@@ -2,18 +2,20 @@ package controller;
 
 import model.Model;
 import observer.AbstractListenableModel;
+import observer.ModelListener;
 import personnagesJeu.Personnage;
 import vue.Vue;
 
 import java.util.Arrays;
 
-public class Controller extends AbstractListenableModel {
+public class Controller extends AbstractListenableModel implements ModelListener {
 
     private Model model;
     private Vue vue;
 
     public Controller(Model model) {
         this.model = model;
+        model.addModelListener(this);
 
         //for(Personnage joueur : model.getListeJoueurs()) {
             this.vue = new Vue(model.getCurrentPlayer(), model.getProxyPlateau()); // Affiche la fenêtre du jeu.
@@ -30,4 +32,8 @@ public class Controller extends AbstractListenableModel {
 
     }
 
+    @Override
+    public void somethingHasChanged(Object source) {
+        this.vue.update();
+    }
 }

@@ -6,7 +6,7 @@ import personnagesJeu.Personnage;
 
 import java.util.List;
 
-public interface Plateau extends ModelListener {
+public interface Plateau {
     public void generePlateau(int taille);
     public void ajoutMur(int x, int y);
     public Case[][] getPlateau();
