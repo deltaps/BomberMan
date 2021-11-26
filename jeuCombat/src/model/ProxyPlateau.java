@@ -1,6 +1,5 @@
 package model;
 
-import observer.AbstractListenableModel;
 import personnagesJeu.Personnage;
 
 import java.util.List;

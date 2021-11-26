@@ -7,7 +7,6 @@ import personnagesJeu.Personnage;
 import java.awt.*;
 import java.util.List;
 
-
 public class VuePlateau extends JPanel {
 
     public Plateau plateau;
@@ -89,6 +88,6 @@ public class VuePlateau extends JPanel {
             g.drawImage(Image.imagePastille, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
         }
     }
-    //publiv void afficheTir
+    //public void afficheTir
 
 }

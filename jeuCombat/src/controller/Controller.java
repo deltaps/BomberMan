@@ -3,7 +3,6 @@ package controller;
 import model.Model;
 import observer.AbstractListenableModel;
 import observer.ModelListener;
-import personnagesJeu.Personnage;
 import vue.Vue;
 
 import java.util.Arrays;

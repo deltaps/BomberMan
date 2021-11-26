@@ -1,7 +1,6 @@
 package model;
 
 import observer.AbstractListenableModel;
-import observer.ModelListener;
 import personnagesJeu.Personnage;
 
 import java.util.HashMap;

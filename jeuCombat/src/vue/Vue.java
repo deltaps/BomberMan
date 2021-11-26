@@ -2,18 +2,13 @@ package vue;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
-import model.ConcretePlateau;
-import model.Plateau;
 import model.ProxyPlateau;
-import observer.ModelListener;
 import personnagesJeu.Personnage;
 
 public class Vue extends JFrame {
     private ProxyPlateau plateau;
     private Personnage joueur;
-    //private List<Personnage> listejoueurs;
 
     private VuePlateau vuePlateau;
 
