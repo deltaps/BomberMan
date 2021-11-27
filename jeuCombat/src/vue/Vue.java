@@ -28,10 +28,12 @@ public class Vue extends JFrame implements ModelListener {
         this.setPreferredSize(new Dimension(800, 800));
 
         JPanel contentPane = new JPanel();
-        contentPane.setLayout(null);
+        contentPane.setLayout(new BorderLayout(1,1));
 
 
-        contentPane.add(this.vuePlateau);
+        contentPane.add(this.vuePlateau, BorderLayout.WEST);
+
+        contentPane.add(new JTable(new AdapterFromListeJoueursToTableModel(this.plateau.getJoueurs())), BorderLayout.EAST);
 
         //ListeJoueurs listeJoueurs = new ListeJoueurs(this.joueurs)
         //contentPane.add(listeJoueurs);
