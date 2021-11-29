@@ -9,7 +9,7 @@ import java.util.List;
 public class AdapterFromListeJoueursToTableModel implements TableModel {
 
     private List<Personnage> joueurs;
-    private final int NUMERO = 0;
+    private final int ID = 0;
     private final int JOUEUR = 1;
     private final int ENERGIE = 2;
 
@@ -18,7 +18,7 @@ public class AdapterFromListeJoueursToTableModel implements TableModel {
     }
     @Override
     public int getRowCount() {
-        return this.joueurs.size();
+        return this.joueurs.size()+1;
     }
 
     @Override
@@ -29,9 +29,9 @@ public class AdapterFromListeJoueursToTableModel implements TableModel {
     @Override
     public String getColumnName(int columnIndex) {
         return switch (columnIndex) {
-            case NUMERO -> "ID";
-            case JOUEUR -> "Joueur";
-            case ENERGIE -> "Vie";
+            case ID -> "ID";
+            case JOUEUR -> "Nom";
+            case ENERGIE -> "Énergie";
             default -> null;
         };
     }
@@ -48,18 +48,29 @@ public class AdapterFromListeJoueursToTableModel implements TableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Personnage p = this.joueurs.get(rowIndex);
-        return switch (columnIndex) {
-            case NUMERO -> rowIndex;
-            case JOUEUR -> p.getName();
-            case ENERGIE -> p.getEnergie();
-            default -> null;
-        };
+        if(rowIndex == 0) {
+            return switch (columnIndex) {
+                case ID -> "ID";
+                case JOUEUR -> "Nom";
+                case ENERGIE -> "Énergie";
+                default -> null;
+            };
+        }
+        else {
+            rowIndex -= 1;
+            Personnage p = this.joueurs.get(rowIndex);
+            return switch (columnIndex) {
+                case ID -> rowIndex+1;
+                case JOUEUR -> p.getName();
+                case ENERGIE -> p.getEnergie();
+                default -> null;
+            };
+        }
     }
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        this.joueurs.set(rowIndex, (Personnage) aValue);
+        this.joueurs.set(rowIndex, ((Personnage) aValue));
     }
 
     @Override

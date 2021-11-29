@@ -12,12 +12,14 @@ public class Vue extends JFrame implements ModelListener {
     private Personnage joueur;
 
     private VuePlateau vuePlateau;
+    private InfoJoueur infoJoueur;
 
     public Vue(Personnage joueur, ProxyPlateau plateau) {
         this.joueur = joueur;
         this.plateau = plateau;
 
         this.vuePlateau = new VuePlateau(plateau, this.joueur);
+        this.infoJoueur = new InfoJoueur(this.joueur);
 
         this.GUI();
     }
@@ -25,24 +27,22 @@ public class Vue extends JFrame implements ModelListener {
     public void GUI() {
         this.setTitle("Bomberman");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(800, 800));
+        this.setPreferredSize(new Dimension(400, 600));
 
-        JPanel contentPane = new JPanel();
-        contentPane.setLayout(new BorderLayout(1,1));
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
 
-        contentPane.add(this.vuePlateau, BorderLayout.WEST);
+        contentPane.add(this.vuePlateau, BorderLayout.NORTH);
 
-        contentPane.add(new JTable(new AdapterFromListeJoueursToTableModel(this.plateau.getJoueurs())), BorderLayout.EAST);
+        JTable playerList = new JTable(new AdapterFromListeJoueursToTableModel(this.plateau.getJoueurs()));
+        playerList.setPreferredSize(new Dimension(150,200));
+        contentPane.add(playerList, BorderLayout.EAST);
 
-        //ListeJoueurs listeJoueurs = new ListeJoueurs(this.joueurs)
-        //contentPane.add(listeJoueurs);
+        contentPane.add(this.infoJoueur, BorderLayout.WEST);
 
-        //InfoJoueur infoJoueur = new InfoJoueur(this.joueur);
-        //contentPane.add(infoJoueur);
-
-        //ActionJoueur actionJoueur = new ActionJoueur();
-        //contentPane.add(actionJoueur);
+        ActionJoueur actionJoueur = new ActionJoueur(this.joueur);
+        contentPane.add(actionJoueur, BorderLayout.CENTER);
 
         setContentPane(contentPane);
         pack();
@@ -53,6 +53,12 @@ public class Vue extends JFrame implements ModelListener {
 
     @Override
     public void somethingHasChanged(Object source) {
+        getContentPane().remove(this.infoJoueur);
+        this.infoJoueur = new InfoJoueur(this.joueur);
+        getContentPane().add(this.infoJoueur);
+
+        setVisible(true);
+
         repaint();
     }
 }

@@ -3,6 +3,7 @@ package vue;
 import personnagesJeu.Personnage;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ActionJoueur extends JPanel {
     private Personnage joueur;
@@ -10,6 +11,6 @@ public class ActionJoueur extends JPanel {
     public ActionJoueur(Personnage joueur) {
         this.joueur = joueur;
 
-        setSize(600,200);
+        setPreferredSize(new Dimension(150,200));
     }
 }

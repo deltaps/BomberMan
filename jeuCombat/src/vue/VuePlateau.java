@@ -12,22 +12,17 @@ public class VuePlateau extends JPanel {
     public Plateau plateau;
     public Personnage joueurCourant;
 
-    private final int WIDTH = 600;
-    private final int HEIGHT = 600;
-    private final int IMAGE_WIDTH;
-    private final int IMAGE_HEIGHT;
+    private final int WIDTH = 400;
+    private final int HEIGHT = 400;
     private final int TAILLE_IMAGE = 40;
 
     public VuePlateau (Plateau plateau, Personnage joueurCourant){
 
-        IMAGE_WIDTH = WIDTH / plateau.getTaille();
-        IMAGE_HEIGHT = HEIGHT / plateau.getTaille();
-
-        this.setSize(new Dimension(WIDTH, HEIGHT));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
         this.plateau = plateau;
         this.joueurCourant = joueurCourant;
-        Image.resize(IMAGE_WIDTH, IMAGE_HEIGHT);
+        //Image.resize(IMAGE_WIDTH, IMAGE_HEIGHT);
     }
 
     @Override
