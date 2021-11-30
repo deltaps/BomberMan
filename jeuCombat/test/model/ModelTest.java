@@ -19,6 +19,7 @@ class ModelTest {
         for(int i = 0; i<99999; i++){
             Model model = new Model(10,listePersonnage);
             ConcretePlateau plateau = model.getPlateau();
+            assertFalse(j1.getPosition()[0] == j2.getPosition()[0] && j1.getPosition()[1] == j2.getPosition()[1]);
             assertFalse(plateau.getPastille(j1.getPosition()[0],j1.getPosition()[1]));
             assertFalse(plateau.getPastille(j2.getPosition()[0],j2.getPosition()[1]));
             assertFalse(plateau.getPlateau()[j1.getPosition()[0]][j1.getPosition()[1]].getWall());
