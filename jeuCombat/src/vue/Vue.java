@@ -3,6 +3,7 @@ package vue;
 import javax.swing.*;
 import java.awt.*;
 
+import controller.Controller;
 import model.ProxyPlateau;
 import observer.ModelListener;
 import personnagesJeu.Personnage;
@@ -10,16 +11,20 @@ import personnagesJeu.Personnage;
 public class Vue extends JFrame implements ModelListener {
     private ProxyPlateau plateau;
     private Personnage joueur;
+    private Controller controller;
 
     private VuePlateau vuePlateau;
     private InfoJoueur infoJoueur;
+    private ActionJoueur actionJoueur;
 
-    public Vue(Personnage joueur, ProxyPlateau plateau) {
+    public Vue(Personnage joueur, ProxyPlateau plateau, Controller controller) {
         this.joueur = joueur;
         this.plateau = plateau;
+        this.controller = controller;
 
         this.vuePlateau = new VuePlateau(plateau, this.joueur);
         this.infoJoueur = new InfoJoueur(this.joueur);
+        this.actionJoueur = new ActionJoueur(this.joueur, this.controller);
 
         this.GUI();
     }
@@ -37,12 +42,12 @@ public class Vue extends JFrame implements ModelListener {
 
         JTable playerList = new JTable(new AdapterFromListeJoueursToTableModel(this.plateau.getJoueurs()));
         playerList.setPreferredSize(new Dimension(150,200));
+        playerList.setBorder(BorderFactory.createLineBorder(Color.black));
         contentPane.add(playerList, BorderLayout.EAST);
 
         contentPane.add(this.infoJoueur, BorderLayout.WEST);
 
-        ActionJoueur actionJoueur = new ActionJoueur(this.joueur);
-        contentPane.add(actionJoueur, BorderLayout.CENTER);
+        contentPane.add(this.actionJoueur, BorderLayout.CENTER);
 
         setContentPane(contentPane);
         pack();
@@ -55,10 +60,13 @@ public class Vue extends JFrame implements ModelListener {
     public void somethingHasChanged(Object source) {
         getContentPane().remove(this.infoJoueur);
         this.infoJoueur = new InfoJoueur(this.joueur);
-        getContentPane().add(this.infoJoueur);
+        getContentPane().add(this.infoJoueur, BorderLayout.WEST);
 
         setVisible(true);
 
+        this.actionJoueur.afficheActionsDisponibles();
+
+        revalidate();
         repaint();
     }
 }

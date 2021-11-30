@@ -22,7 +22,6 @@ public class VuePlateau extends JPanel {
 
         this.plateau = plateau;
         this.joueurCourant = joueurCourant;
-        //Image.resize(IMAGE_WIDTH, IMAGE_HEIGHT);
     }
 
     @Override

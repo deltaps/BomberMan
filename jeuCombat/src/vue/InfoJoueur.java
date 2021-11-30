@@ -7,10 +7,13 @@ import java.awt.*;
 
 public class InfoJoueur extends JPanel {
 
+    private Personnage joueur;
+
     public InfoJoueur(Personnage joueur) {
 
-        //setLayout(new BorderLayout(5,5));
+        this.joueur = joueur;
         setPreferredSize(new Dimension(100,200));
+        setBorder(BorderFactory.createLineBorder(Color.black));
         setLayout(new GridLayout(5,1));
         add(new JLabel("Joueur : " + joueur.getName()));
         add(new JLabel("Énergie : " + joueur.getEnergie()));
