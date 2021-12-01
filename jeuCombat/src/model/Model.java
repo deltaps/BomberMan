@@ -11,6 +11,7 @@ import java.util.Random;
 public class Model extends AbstractListenableModel {
     //TODO UML
     //TODO RAPPORT
+    //TODO Vue "responsive" ajout de fin de jeu, possibilité de choisir le jeu (nbJoueurs, taille plateau)
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
@@ -112,6 +113,9 @@ public class Model extends AbstractListenableModel {
 
     public void changePlayer() {
         for (int n = 0; n < this.listeJoueurs.size(); n++) {
+            if(this.listeJoueurs.get(n).getEnergie() <= 0){
+                this.listeJoueurs.remove(n);
+            }
             if (this.listeJoueurs.get(n) == this.currentPlayer) {
                 if (n == this.listeJoueurs.size() - 1) {
                     this.currentPlayer = this.listeJoueurs.get(0);

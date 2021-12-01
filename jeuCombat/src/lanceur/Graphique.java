@@ -20,14 +20,13 @@ public class Graphique {
     protected final int BASGAUCHE = 7;
     public static void main(String[] args){
 
-        Personnage joueur1 = new Personnage("Aurlien");
+        Personnage joueur1 = new Personnage("Aurélien");
         Personnage joueur2 = new Personnage("Justice");
         List<Personnage> listePerso = new ArrayList<>();
         listePerso.add(joueur2);
         listePerso.add(joueur1);
         Model jeu = new Model(10,listePerso);
 
-        //Vue vue = new Vue(joueur1, jeu.getProxyPlateau());
         Controller controller = new Controller(jeu);
         for(int i = 0; i< 10; i++){
             for(int j =0; j < 10; j++){
@@ -36,5 +35,5 @@ public class Graphique {
         }
         jeu.toString();
 
-        }
+    }
 }
