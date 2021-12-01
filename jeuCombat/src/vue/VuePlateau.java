@@ -36,7 +36,9 @@ public class VuePlateau extends JPanel {
 
                 afficheCase(g,x, y);
                 afficheMur(g, square, x, y);
-                afficheWeapon(g, square, x, y);
+                if(this.plateau.getArme(y, x, this.joueurCourant) != null) {
+                    afficheWeapon(g, square, x, y);
+                }
                 affichePastille(g, square, x, y);
             }
         }
