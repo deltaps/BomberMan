@@ -4,12 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 import controller.Controller;
+import model.Plateau;
 import model.ProxyPlateau;
 import observer.ModelListener;
 import personnagesJeu.Personnage;
 
 public class Vue extends JFrame implements ModelListener {
-    private ProxyPlateau plateau;
+    private Plateau plateau;
     private Personnage joueur;
     private Controller controller;
 
@@ -17,7 +18,7 @@ public class Vue extends JFrame implements ModelListener {
     private InfoJoueur infoJoueur;
     private ActionJoueur actionJoueur;
 
-    public Vue(Personnage joueur, ProxyPlateau plateau, Controller controller) {
+    public Vue(Personnage joueur, Plateau plateau, Controller controller) {
         this.joueur = joueur;
         this.plateau = plateau;
         this.controller = controller;

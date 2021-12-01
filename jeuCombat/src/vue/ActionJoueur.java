@@ -14,6 +14,7 @@ public class ActionJoueur extends JPanel implements ActionListener {
     private Controller controller;
 
     private final JButton deplacement, mine, bombe, tir, bouclier, rienfaire, annuler;
+    private final JCheckBox checkBoxVisible;
 
     public ActionJoueur(Personnage joueur, Controller controller) {
         this.joueur = joueur;
@@ -29,6 +30,8 @@ public class ActionJoueur extends JPanel implements ActionListener {
         this.bouclier = new JButton("Se protéger");
         this.rienfaire = new JButton("Ne rien faire");
         this.annuler = new JButton("Annuler");
+        this.checkBoxVisible = new JCheckBox("Visible par les ennemis");
+        this.checkBoxVisible.setFont(new Font("Serif", Font.PLAIN, 10));
 
         this.deplacement.addActionListener(this);
         this.mine.addActionListener(this);
@@ -37,6 +40,7 @@ public class ActionJoueur extends JPanel implements ActionListener {
         this.bouclier.addActionListener(this);
         this.rienfaire.addActionListener(this);
         this.annuler.addActionListener(this);
+        this.checkBoxVisible.addActionListener(this);
 
 
         afficheActionsDisponibles();
@@ -126,10 +130,11 @@ public class ActionJoueur extends JPanel implements ActionListener {
         setLayout(new GridLayout(3,1));
 
         JTextArea textArea1 = createTextArea("Vous pouvez déposer une mine sur une case adjacente ou diagonale à la votre si vous possédez plus de 1 énergie.");
-        JTextArea textArea2 = createTextArea("Une mine explose au contact d'un joueur.");
+
+        this.checkBoxVisible.setSelected(this.controller.getVisible());
 
         add(textArea1);
-        add(textArea2);
+        add(this.checkBoxVisible);
         add(this.annuler);
     }
 
@@ -138,10 +143,11 @@ public class ActionJoueur extends JPanel implements ActionListener {
         setLayout(new GridLayout(3,1));
 
         JTextArea textArea1 = createTextArea("Vous pouvez déposer une bombe sur une case adjacente ou diagonale à la votre si vous possédez plus de 1 énergie.");
-        JTextArea textArea2 = createTextArea("Une bombe explose au contact d'un joueur, ou alors au bout d'un certain temps (nombre de tour).");
+
+        this.checkBoxVisible.setSelected(this.controller.getVisible());
 
         add(textArea1);
-        add(textArea2);
+        add(this.checkBoxVisible);
         add(this.annuler);
     }
 
@@ -205,6 +211,9 @@ public class ActionJoueur extends JPanel implements ActionListener {
         else if(source == rienfaire) {
             this.controller.setAction("rienfaire", this.joueur);
             this.controller.action();
+        }
+        else if(source == checkBoxVisible) {
+            this.controller.setVisible(checkBoxVisible.isSelected());
         }
 
         revalidate();

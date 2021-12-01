@@ -12,6 +12,7 @@ public class Controller {
     private Vue vue;
 
     protected String action;
+    protected boolean visible;
 
     public Controller(Model model) {
         this.model = model;
@@ -24,6 +25,7 @@ public class Controller {
         }
 
         this.action = null;
+        this.visible = false;
     }
 
     public Personnage getJoueurCourant() {
@@ -40,17 +42,25 @@ public class Controller {
         }
     }
 
+    public boolean getVisible() {
+        return this.visible;
+    }
+
+    public void setVisible(boolean b) {
+        this.visible = b;
+    }
+
     public void action(int[] position) {
         if(this.action == "deplacement") {
             this.model.action(8, position, false);
         }
 
         else if(this.action == "mine") {
-            this.model.action(9, position, false);
+            this.model.action(9, position, this.visible);
         }
 
         else if(this.action == "bombe") {
-            this.model.action(10, position, false);
+            this.model.action(10, position, this.visible);
         }
 
         else if(this.action == "tir") {
