@@ -40,7 +40,9 @@ public class LandMine implements Weapon{
         for(Personnage joueur : this.plateau.getJoueurs()) {
             int joueurX = joueur.getPosition()[0];
             int joueurY = joueur.getPosition()[1];
-
+            if(joueur.getBouclier()){
+                continue;
+            }
             if(joueurX == bombX && joueurY == bombY) {
                 joueur.addEnergie(-1);
             }

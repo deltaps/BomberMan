@@ -141,6 +141,7 @@ public class Model extends AbstractListenableModel {
                     if (casey.getWeapon() instanceof Bomb && casey.getWeapon().getOwner() == player){
                         ((Bomb) casey.getWeapon()).tictac();
                         if(((Bomb) casey.getWeapon()).getCompteARebourt() == 0){
+                            casey.getWeapon().detonation();
                             casey.setWeapon(null);
                         }
                     }
@@ -150,6 +151,7 @@ public class Model extends AbstractListenableModel {
     }
 
     public void action(int action, int[] direction, boolean visible){
+        Case caseCourante = this.concretePlateau.getCase(this.currentPlayer.getPosition()[0]+direction[0],this.currentPlayer.getPosition()[1]+direction[1]);
         switch (action) {
             case DEPLACEMENT:
                 this.action.deplacement(this.currentPlayer, direction);
@@ -163,12 +165,24 @@ public class Model extends AbstractListenableModel {
                 }
                 break;
             case MINE:
-                if(this.concretePlateau.getCase(this.currentPlayer.getPosition()[0]+direction[0],this.currentPlayer.getPosition()[1]+direction[1]).getWeapon() == null){
+                Boolean pasSurJoueur = true;
+                for(Personnage joueurAdv : this.listeJoueurs){
+                    if(this.concretePlateau.getCase(joueurAdv.getPosition()[0],joueurAdv.getPosition()[1]) == caseCourante){
+                        pasSurJoueur = false;
+                    }
+                }
+                if(caseCourante.getWeapon() == null && !caseCourante.getPastille() && pasSurJoueur){
                     this.action.poseMine(this.currentPlayer, direction, visible);
                 }
                 break;
             case BOMBE:
-                if(this.concretePlateau.getCase(this.currentPlayer.getPosition()[0]+direction[0],this.currentPlayer.getPosition()[1]+direction[1]).getWeapon() == null){
+                pasSurJoueur = true;
+                for(Personnage joueurAdv : this.listeJoueurs){
+                    if(this.concretePlateau.getCase(joueurAdv.getPosition()[0],joueurAdv.getPosition()[1]) == caseCourante){
+                        pasSurJoueur = false;
+                    }
+                }
+                if(caseCourante.getWeapon() == null && !caseCourante.getPastille() && pasSurJoueur){
                     this.action.poseBombe(this.currentPlayer, direction, visible);
                 }
                 break;

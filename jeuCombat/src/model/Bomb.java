@@ -31,7 +31,9 @@ public class Bomb implements Weapon{
         for(Personnage joueur : this.plateau.getJoueurs()) {
             int joueurX = joueur.getPosition()[0];
             int joueurY = joueur.getPosition()[1];
-
+            if(joueur.getBouclier()){
+                continue;
+            }
             if(joueurX == this.position[0] && joueurY == this.position[1]) {
                 joueur.addEnergie(-1);
             }

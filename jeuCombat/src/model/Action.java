@@ -12,7 +12,15 @@ public class Action {
     }
 
     public void deplacement(Personnage joueur,int[] direction){
-        if(joueur.getEnergie() > 1){
+        Boolean pasSurjoueur = true;
+        for(Personnage joueurAdv : this.concretePlateau.getJoueurs()){
+            if(joueurAdv != joueur){
+                if(joueur.getPosition()[0] + direction[0] == joueurAdv.getPosition()[0] && joueur.getPosition()[1] + direction[1] == joueurAdv.getPosition()[1]){
+                    pasSurjoueur = false;
+                }
+            }
+        }
+        if(joueur.getEnergie() > 1 && pasSurjoueur){
             if(!(concretePlateau.getPlateau()[joueur.getPosition()[0]+direction[0]][joueur.getPosition()[1]+direction[1]].getWall())){
                 int[] nouvellePosition = new int[]{joueur.getPosition()[0]+direction[0],joueur.getPosition()[1]+direction[1]};
                 joueur.setPosition(nouvellePosition);
