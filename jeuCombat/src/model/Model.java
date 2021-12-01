@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Random;
 
 public class Model extends AbstractListenableModel {
-    //TODO Implémenter VUE-Controller avec les pattern
     //TODO UML
     //TODO RAPPORT
+    //TODO bouclier ne s'actualise pas
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
@@ -157,10 +157,14 @@ public class Model extends AbstractListenableModel {
                 }
                 break;
             case MINE:
-                this.action.poseMine(this.currentPlayer, direction, visible);
+                if(this.concretePlateau.getCase(this.currentPlayer.getPosition()[0]+direction[0],this.currentPlayer.getPosition()[1]+direction[1]).getWeapon() == null){
+                    this.action.poseMine(this.currentPlayer, direction, visible);
+                }
                 break;
             case BOMBE:
-                this.action.poseBombe(this.currentPlayer, direction, visible);
+                if(this.concretePlateau.getCase(this.currentPlayer.getPosition()[0]+direction[0],this.currentPlayer.getPosition()[1]+direction[1]).getWeapon() == null){
+                    this.action.poseBombe(this.currentPlayer, direction, visible);
+                }
                 break;
             case TIR:
                 this.action.fire(this.currentPlayer, direction);
