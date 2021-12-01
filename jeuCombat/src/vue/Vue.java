@@ -5,7 +5,6 @@ import java.awt.*;
 
 import controller.Controller;
 import model.Plateau;
-import model.ProxyPlateau;
 import observer.ModelListener;
 import personnagesJeu.Personnage;
 
@@ -25,7 +24,7 @@ public class Vue extends JFrame implements ModelListener {
 
         this.vuePlateau = new VuePlateau(plateau, this.joueur);
         this.infoJoueur = new InfoJoueur(this.joueur);
-        this.actionJoueur = new ActionJoueur(this.joueur, this.controller);
+        this.actionJoueur = new ActionJoueur(this.joueur, this.controller, Image.TAILLE_IMAGE * plateau.getTaille() -250);
 
         this.GUI();
     }
@@ -33,7 +32,7 @@ public class Vue extends JFrame implements ModelListener {
     public void GUI() {
         this.setTitle("Bomberman");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(400, 600));
+        this.setPreferredSize(new Dimension(Image.TAILLE_IMAGE * plateau.getTaille() +10, Image.TAILLE_IMAGE * plateau.getTaille() +200));
 
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());

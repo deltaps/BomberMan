@@ -138,7 +138,7 @@ public class ConcretePlateau implements Plateau {
     }
 
     public int getTaille(){
-        return this.taille;
+        return this.taille+1;
     }
 
     public List<Personnage> getJoueurs() {

@@ -6,8 +6,6 @@ import personnagesJeu.Personnage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import vue.Vue;
 
 public class Graphique {
     protected final int HAUT = 0;
@@ -25,15 +23,8 @@ public class Graphique {
         List<Personnage> listePerso = new ArrayList<>();
         listePerso.add(joueur2);
         listePerso.add(joueur1);
-        Model jeu = new Model(10,listePerso);
+        Model jeu = new Model(8,listePerso);
 
         Controller controller = new Controller(jeu);
-        for(int i = 0; i< 10; i++){
-            for(int j =0; j < 10; j++){
-                System.out.println(jeu.getPlateau().getCase(i,j));
-            }
-        }
-        jeu.toString();
-
     }
 }

@@ -16,11 +16,11 @@ public class ActionJoueur extends JPanel implements ActionListener {
     private final JButton deplacement, mine, bombe, tir, bouclier, rienfaire, annuler;
     private final JCheckBox checkBoxVisible;
 
-    public ActionJoueur(Personnage joueur, Controller controller) {
+    public ActionJoueur(Personnage joueur, Controller controller, int width) {
         this.joueur = joueur;
         this.controller = controller;
 
-        setPreferredSize(new Dimension(150,200));
+        setPreferredSize(new Dimension(width,200));
         setBorder(BorderFactory.createLineBorder(Color.black));
 
         this.deplacement = new JButton("Se déplacer");

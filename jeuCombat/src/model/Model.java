@@ -206,9 +206,9 @@ public class Model extends AbstractListenableModel {
     public String toString() {
         System.out.println("Affichage du plateau du joueur" + this.currentPlayer);
         boolean danslejoueur = false;
-        for (int x = 0; x < this.concretePlateau.getTaille()+1; x++) {
+        for (int x = 0; x < this.concretePlateau.getTaille(); x++) {
             System.out.println("");
-            for (int y = 0; y < this.concretePlateau.getTaille()+1; y++) {
+            for (int y = 0; y < this.concretePlateau.getTaille(); y++) {
                 danslejoueur = false;
                 for(Personnage joueur : this.listeJoueurs){
                     if(joueur.getPosition()[0] == x && joueur.getPosition()[1] == y){

@@ -12,13 +12,13 @@ public class VuePlateau extends JPanel {
     public Plateau plateau;
     public Personnage joueurCourant;
 
-    private final int WIDTH = 400;
-    private final int HEIGHT = 400;
     private final int TAILLE_IMAGE = 40;
 
     public VuePlateau (Plateau plateau, Personnage joueurCourant){
 
-        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        System.out.println("plateau : " + plateau.getTaille());
+        System.out.println(Image.TAILLE_IMAGE * plateau.getTaille());
+        setPreferredSize(new Dimension(Image.TAILLE_IMAGE * plateau.getTaille(), Image.TAILLE_IMAGE * plateau.getTaille()));
 
         this.plateau = plateau;
         this.joueurCourant = joueurCourant;
@@ -30,8 +30,8 @@ public class VuePlateau extends JPanel {
         int tailleLigne = this.plateau.getTaille();
         int tailleColonne = this.plateau.getTaille();
 
-        for(int x = 0; x <= tailleLigne; x++) {
-            for(int y = 0; y <= tailleColonne; y++) {
+        for(int x = 0; x < tailleLigne; x++) {
+            for(int y = 0; y < tailleColonne; y++) {
                 Case square = this.plateau.getCase(y, x);
 
                 afficheCase(g,x, y);

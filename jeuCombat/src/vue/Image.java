@@ -15,6 +15,7 @@ public class Image {
     public static BufferedImage imagePastille;
     public static BufferedImage imageMine;
     public static BufferedImage imageTir;
+    public final static int TAILLE_IMAGE = 40;
 
     public static String DELIMITEUR_LINUX = "/";
     public static String DELIMITEUR_WINDOWS = "\\";
