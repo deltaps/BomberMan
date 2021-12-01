@@ -11,7 +11,6 @@ import java.util.Random;
 public class Model extends AbstractListenableModel {
     //TODO UML
     //TODO RAPPORT
-    //TODO bouclier ne s'actualise pas
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
@@ -117,10 +116,13 @@ public class Model extends AbstractListenableModel {
                 if (n == this.listeJoueurs.size() - 1) {
                     this.currentPlayer = this.listeJoueurs.get(0);
                     this.compteurBombe(this.currentPlayer);
+                    this.currentPlayer.setBouclier(false);
                     break;
-                } else {
+                }
+                else {
                     this.currentPlayer = this.listeJoueurs.get(n + 1);
                     this.compteurBombe(this.currentPlayer);
+                    this.currentPlayer.setBouclier(false);
                     break;
                 }
             }
