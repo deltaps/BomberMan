@@ -8,11 +8,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*
+Classe permettant d'afficher les options disponibles pour le joueur en fonction de ses attributs actuels.
+Les boutons ont des listener qui appelent des fonctions du controller, si l'utilisateur veut que celles-ci soient visibles ou non.
+ */
+
 public class ActionJoueur extends JPanel implements ActionListener {
 
     private Personnage joueur;
     private Controller controller;
 
+    // Tous les boutons correspondant à toutes les actions possibles.
+    // Les JCheckBox servent uniquement pour poser des bombes.
     private final JButton deplacement, mine, bombe, tir, bouclier, rienfaire, annuler;
     private final JCheckBox checkBoxVisible;
 
@@ -24,8 +31,8 @@ public class ActionJoueur extends JPanel implements ActionListener {
         setBorder(BorderFactory.createLineBorder(Color.black));
 
         this.deplacement = new JButton("Se déplacer");
-        this.mine = new JButton("Poser une mine");
-        this.bombe = new JButton("Poser une bombe");
+        this.mine = new JButton("Mine");
+        this.bombe = new JButton("Bombe");
         this.tir = new JButton("Tirer");
         this.bouclier = new JButton("Se protéger");
         this.rienfaire = new JButton("Ne rien faire");
@@ -46,15 +53,16 @@ public class ActionJoueur extends JPanel implements ActionListener {
         afficheActionsDisponibles();
     }
 
+    // Cette méthode affiche toutes les actions en fonction de l'énergie et des munitions du joueur.
+    // Par exemple s'il n'a plus assez d'énergie, il ne peut plus poser de bombe donc le bouton pour poser des bombes ne s'affiche plus.
     public void afficheActionsDisponibles() {
         removeAll();
 
-        if(this.joueur == this.controller.getJoueurCourant()) {
+        if(this.joueur == this.controller.getJoueurCourant()) { // Si le joueur actuel est le joueur courant.
 
-            if(this.controller.getAction() == null) {
+            if(this.controller.getAction() == null) { // Si le joueur n'a pas sélectionné d'action.
 
-
-                if (this.joueur.getEnergie() > 1 && this.joueur.getMunition() > 0) {
+                if (this.joueur.getEnergie() > 2 && this.joueur.getMunition() > 0) {
                     setLayout(new GridLayout(6, 1));
 
                     add(this.deplacement);
@@ -64,6 +72,16 @@ public class ActionJoueur extends JPanel implements ActionListener {
                     add(this.bouclier);
                     add(this.rienfaire);
                 }
+
+                else if (this.joueur.getEnergie() > 1 && this.joueur.getMunition() > 0) {
+                    setLayout(new GridLayout(4, 1));
+
+                    add(this.deplacement);
+                    add(this.tir);
+                    add(this.bouclier);
+                    add(this.rienfaire);
+                }
+
                 else if (this.joueur.getEnergie() <= 1 && this.joueur.getMunition() > 0) {
                     setLayout(new GridLayout(2, 1));
 
@@ -76,13 +94,33 @@ public class ActionJoueur extends JPanel implements ActionListener {
                     add(this.bouclier);
                     add(this.rienfaire);
                 }
+
                 else if (this.joueur.getEnergie() <= 1 && this.joueur.getMunition() <= 0) {
                     setLayout(new GridLayout(1, 1));
 
                     add(this.rienfaire);
                 }
+
+                else if (this.joueur.getEnergie() > 2 && this.joueur.getMunition() <= 0) {
+                    setLayout(new GridLayout(5, 1));
+
+                    add(this.deplacement);
+                    add(this.mine);
+                    add(this.bombe);
+                    add(this.bouclier);
+                    add(this.rienfaire);
+                }
+
+                else if (this.joueur.getEnergie() > 1 && this.joueur.getMunition() <= 0) {
+                    setLayout(new GridLayout(3, 1));
+
+                    add(this.deplacement);
+                    add(this.bouclier);
+                    add(this.rienfaire);
+                }
             }
 
+            // Si le joueur a sélectionné les actions telles que "deplacement", "mine", "bombe".
             else if(this.controller.getAction() == "deplacement" || this.controller.getAction() == "mine" || this.controller.getAction() == "bombe") {
 
                 if(this.joueur.getEnergie() > 1) {
@@ -113,6 +151,7 @@ public class ActionJoueur extends JPanel implements ActionListener {
         repaint();
     }
 
+    // Si le joueur a sélectionné l'action "deplacement", il affiche du texte et un bouton pour annuler son action.
     public void afficheActionDeplacement() {
         removeAll();
         setLayout(new GridLayout(3,1));
@@ -125,6 +164,7 @@ public class ActionJoueur extends JPanel implements ActionListener {
         add(this.annuler);
     }
 
+    // Pareil mais avec l'action pour poser une mine.
     public void afficheActionMine() {
         removeAll();
         setLayout(new GridLayout(3,1));
@@ -138,6 +178,7 @@ public class ActionJoueur extends JPanel implements ActionListener {
         add(this.annuler);
     }
 
+    // Pareil mais avec l'action pour poser une bombe.
     public void afficheActionBombe() {
         removeAll();
         setLayout(new GridLayout(3,1));
@@ -151,6 +192,7 @@ public class ActionJoueur extends JPanel implements ActionListener {
         add(this.annuler);
     }
 
+    // Pareil mais avec l'action pour tirer.
     public void afficheActionTir() {
         removeAll();
         setLayout(new GridLayout(3,1));
@@ -163,6 +205,9 @@ public class ActionJoueur extends JPanel implements ActionListener {
         add(this.annuler);
     }
 
+    // Cette méthode va créer et renvoyer une zone de text (JTextArea).
+    // JTextArea a la particularité d'avoir les méthodes setLineWrap(true) qui permet le saut de lignes
+    // Ainsi que setFont() qui permet de réduire la taille de la police dans notre cas, mais aussi de la changer (la police).
     public JTextArea createTextArea(String message) {
         JTextArea textArea = new JTextArea(message);
 
@@ -174,6 +219,8 @@ public class ActionJoueur extends JPanel implements ActionListener {
         return textArea;
     }
 
+    // Méthode redéfinie de ActionListener exécutée chaque fois qu'un bouton est appuyé.
+    // Analyse la source et si c'est un bouton, fait l'action du controller correspondant.
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();

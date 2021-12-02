@@ -7,6 +7,10 @@ import personnagesJeu.Personnage;
 import java.awt.*;
 import java.util.List;
 
+/*
+Cette classe va afficher le plateau en entier et tous ses éléments.
+ */
+
 public class VuePlateau extends JPanel {
 
     public Plateau plateau;
@@ -22,6 +26,8 @@ public class VuePlateau extends JPanel {
         this.joueurCourant = joueurCourant;
     }
 
+    // Méthode redéfinie de JPanel, permet de dessiner grâce à une variable de type Graphics.
+    // Elle est appelée avec diverses fonction dans la vue comme "setVisible(true)" ou encore "repaint()".
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -30,6 +36,7 @@ public class VuePlateau extends JPanel {
 
         for(int x = 0; x < tailleLigne; x++) {
             for(int y = 0; y < tailleColonne; y++) {
+                // Pour chaque case, nous allons afficher tous les éléments qui sont dessus.
                 Case square = this.plateau.getCase(y, x);
 
                 afficheCase(g,x, y);
@@ -52,6 +59,7 @@ public class VuePlateau extends JPanel {
         }
     }
 
+    // Affiche toutes les bombes qui sont visibles par tout le monde et toutes les bombes du joueur personnel non visibles.
     public void afficheWeapon(Graphics g, Case square, int x, int y){
         if(this.plateau.getArme(y, x, this.joueurCourant) != null) {
             if (square.getWeapon() instanceof Bomb) {
@@ -62,17 +70,19 @@ public class VuePlateau extends JPanel {
         }
     }
 
+    // Affiche les joueurs ennemis en rouge, et le joueur personnel en bleu. N'affiche pas les joueurs qui n'ont plus d'énergie.
     public void afficheJoueur(Graphics g) {
         List<Personnage> listeJoueurs = this.plateau.getJoueurs();
-        for (Personnage X : listeJoueurs) {
-            int x = X.getPosition()[0];
-            int y = X.getPosition()[1];
+        for (Personnage joueur : listeJoueurs) {
+            if(joueur.getEnergie() > 0) {
+                int x = joueur.getPosition()[0];
+                int y = joueur.getPosition()[1];
 
-            if(X == this.joueurCourant) {
-                g.drawImage(Image.imageJoueur, y * TAILLE_IMAGE, x * TAILLE_IMAGE, null);
-            }
-            else {
-                g.drawImage(Image.imageEnnemie, y * TAILLE_IMAGE, x * TAILLE_IMAGE, null);
+                if (joueur == this.joueurCourant) {
+                    g.drawImage(Image.imageJoueur, y * TAILLE_IMAGE, x * TAILLE_IMAGE, null);
+                } else {
+                    g.drawImage(Image.imageEnnemie, y * TAILLE_IMAGE, x * TAILLE_IMAGE, null);
+                }
             }
         }
     }

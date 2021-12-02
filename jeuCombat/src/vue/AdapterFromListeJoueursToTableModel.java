@@ -6,6 +6,12 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.util.List;
 
+/*
+Classe utilisant le pattern Adapter pour convertir une liste de joueur en TableModel afin d'en faire un tableau
+(le tableau en bas à droite de l'écran).
+Elle redéfinie toutes les méthodes le cette interface.
+ */
+
 public class AdapterFromListeJoueursToTableModel implements TableModel {
 
     private List<Personnage> joueurs;
