@@ -3,8 +3,11 @@ package controller;
 import model.Model;
 import personnagesJeu.Personnage;
 import vue.Vue;
+import vue.VueOptions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Controller {
 
@@ -14,8 +17,9 @@ public class Controller {
     protected String action;
     protected boolean visible;
 
-    public Controller(Model model) {
-        this.model = model;
+    public Controller() {
+
+        new VueOptions(this);
 
         for(Personnage joueur : model.getListeJoueurs()) {
             Vue view = new Vue(joueur, model.getProxyPlateau(), this); // Affiche la fenêtre du jeu.
@@ -48,6 +52,14 @@ public class Controller {
 
     public void setVisible(boolean b) {
         this.visible = b;
+    }
+
+    public void createModel(int taille, List<String> nomJoueurs) {
+        List<Personnage> joueurs = new ArrayList<>();
+        for(String nom : nomJoueurs) {
+            joueurs.add(new Personnage(nom));
+        }
+        this.model = new Model(taille, joueurs);
     }
 
     public void action(int[] position) {

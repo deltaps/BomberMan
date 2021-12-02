@@ -16,8 +16,6 @@ public class VuePlateau extends JPanel {
 
     public VuePlateau (Plateau plateau, Personnage joueurCourant){
 
-        System.out.println("plateau : " + plateau.getTaille());
-        System.out.println(Image.TAILLE_IMAGE * plateau.getTaille());
         setPreferredSize(new Dimension(Image.TAILLE_IMAGE * plateau.getTaille(), Image.TAILLE_IMAGE * plateau.getTaille()));
 
         this.plateau = plateau;
@@ -36,9 +34,7 @@ public class VuePlateau extends JPanel {
 
                 afficheCase(g,x, y);
                 afficheMur(g, square, x, y);
-                if(this.plateau.getArme(y, x, this.joueurCourant) != null) {
-                    afficheWeapon(g, square, x, y);
-                }
+                afficheWeapon(g, square, x, y);
                 affichePastille(g, square, x, y);
             }
         }
@@ -57,12 +53,12 @@ public class VuePlateau extends JPanel {
     }
 
     public void afficheWeapon(Graphics g, Case square, int x, int y){
-        if(square.getWeapon() instanceof Bomb) {
-            g.drawImage(Image.imageBombe, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
-        }
-
-        else if (square.getWeapon() instanceof LandMine) {
-            g.drawImage(Image.imageMine, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
+        if(this.plateau.getArme(y, x, this.joueurCourant) != null) {
+            if (square.getWeapon() instanceof Bomb) {
+                g.drawImage(Image.imageBombe, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
+            } else if (square.getWeapon() instanceof LandMine) {
+                g.drawImage(Image.imageMine, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
+            }
         }
     }
 
@@ -86,6 +82,4 @@ public class VuePlateau extends JPanel {
             g.drawImage(Image.imagePastille, x * TAILLE_IMAGE, y * TAILLE_IMAGE, null);
         }
     }
-    //public void afficheTir
-
 }

@@ -65,13 +65,13 @@ public class ActionJoueur extends JPanel implements ActionListener {
                     add(this.rienfaire);
                 }
                 else if (this.joueur.getEnergie() <= 1 && this.joueur.getMunition() > 0) {
-                    setLayout(new GridLayout(1, 2));
+                    setLayout(new GridLayout(2, 1));
 
                     add(this.tir);
                     add(this.rienfaire);
                 }
                 else if (this.joueur.getEnergie() > 1 && this.joueur.getMunition() <= 0) {
-                    setLayout(new GridLayout(1, 2));
+                    setLayout(new GridLayout(2, 1));
 
                     add(this.bouclier);
                     add(this.rienfaire);

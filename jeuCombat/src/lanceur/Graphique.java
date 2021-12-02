@@ -18,13 +18,6 @@ public class Graphique {
     protected final int BASGAUCHE = 7;
     public static void main(String[] args){
 
-        Personnage joueur1 = new Personnage("Aurélien");
-        Personnage joueur2 = new Personnage("Justice");
-        List<Personnage> listePerso = new ArrayList<>();
-        listePerso.add(joueur2);
-        listePerso.add(joueur1);
-        Model jeu = new Model(8,listePerso);
-
-        Controller controller = new Controller(jeu);
+        Controller controller = new Controller();
     }
 }
