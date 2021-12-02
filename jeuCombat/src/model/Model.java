@@ -5,10 +5,11 @@ import personnagesJeu.Personnage;
 
 import java.util.List;
 import java.util.Random;
-
+//Class représentant notre jeu, donc appelant toutes les autres class de notre model.
 public class Model extends AbstractListenableModel {
     //TODO UML
     //TODO RAPPORT
+    //Ensemble des variables finales permettant de faire des actions, et de diriger l'action. ----
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
@@ -23,13 +24,15 @@ public class Model extends AbstractListenableModel {
     protected final int TIR = 11;
     protected final int BOUCLIER = 12;
     protected final int RIENFAIRE = 13;
+    //---------------------------------------------------------------------------------------------
+    //Le model possède donc un plateau, les actions possibles, le personnage courant, la liste des personnages, ainsi qu'un proxyPlateau.
     protected ConcretePlateau concretePlateau;
     protected Action action;
     protected Personnage currentPlayer;
     protected List<Personnage> listeJoueurs;
     protected ProxyPlateau proxyPlateau;
 
-    public Model(int taillePlateau, List<Personnage> listeJoueurs){
+    public Model(int taillePlateau, List<Personnage> listeJoueurs){//Le constructeur construit donc le plateau et positionne les joueurs.
         this.concretePlateau = new ConcretePlateau(listeJoueurs, taillePlateau);
         Random random = new Random();
         for(Personnage joueur : listeJoueurs){
@@ -94,41 +97,41 @@ public class Model extends AbstractListenableModel {
         this.listeJoueurs = listeJoueurs;
     }
 
-    public boolean isOver() {
+    public boolean isOver() { //Méthode permettant de savoir si le jeu est fini ou non.
         int nbJoueurs = this.listeJoueurs.size();
         int nbJoueursDown = 0;
-        for (Personnage joueur : this.listeJoueurs) {
+            for (Personnage joueur : this.listeJoueurs) {
             if (joueur.getEnergie() <= 0) {
                 nbJoueursDown++;
             }
         }
-        if (nbJoueursDown >= nbJoueurs - 1) {
+        if (nbJoueursDown >= nbJoueurs - 1) {//On vérifie si tous les joueurs sont mort (-1) si c'est le cas c'est fini.
             return true;
         }
         return false;
     }
 
-    public void changePlayer() {
+    public void changePlayer() { //Méthode permettant de passer aux joueurs suivants, d'incrémenter les compteurs de bombes et de supprimer un joueur de la liste s'il est mort.
         for (int n = 0; n < this.listeJoueurs.size(); n++) {
-            if(this.listeJoueurs.get(n).getEnergie() <= 0){
+            if(this.listeJoueurs.get(n).getEnergie() <= 0){//Vérification si le joueur est mort.
                 this.listeJoueurs.remove(n);
             }
             if (this.listeJoueurs.get(n) == this.currentPlayer) {
-                if (n == this.listeJoueurs.size() - 1) {
+                if (n == this.listeJoueurs.size() - 1) {//Si nous somme au bout de la liste, nous revenons au premier joueur.
                     this.currentPlayer = this.listeJoueurs.get(0);
-                    this.compteurBombe(this.currentPlayer);
-                    this.currentPlayer.setBouclier(false);
+                    this.compteurBombe(this.currentPlayer); //On incrémente toutes les bombes de ce joueur.
+                    this.currentPlayer.setBouclier(false); //On désactive son bouclier.
                     break;
                 }
                 else {
-                    this.currentPlayer = this.listeJoueurs.get(n + 1);
-                    this.compteurBombe(this.currentPlayer);
-                    this.currentPlayer.setBouclier(false);
+                    this.currentPlayer = this.listeJoueurs.get(n + 1); //On prend le prochain joueur.
+                    this.compteurBombe(this.currentPlayer); //On incrémente toutes les bombes de ce joueur.
+                    this.currentPlayer.setBouclier(false); //On désactive son bouclier.
                     break;
                 }
             }
         }
-        fireChange(); //----------------------------
+        fireChange(); // on prévient les écouteurs des changements
     }
 
     public void compteurBombe(Personnage player){

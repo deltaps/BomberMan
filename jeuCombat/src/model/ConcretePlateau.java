@@ -45,6 +45,8 @@ public class ConcretePlateau implements Plateau {
         }
         this.plateau[0][2].setWall(true);
         this.plateau[2][0].setWall(true);
+        this.joueurs = new ArrayList<>();
+        this.joueurs.addAll(joueurs);
     }
     public Case getCase(int x, int y) {
         return this.plateau[x][y];

@@ -2,7 +2,7 @@ package model;
 
 import personnagesJeu.Personnage;
 
-public class Bomb implements Weapon{
+public class Bomb implements Weapon{ //Notre class pour représenter une bombe.
 
     protected Personnage owner;
     protected int compteARebourt;
@@ -12,28 +12,21 @@ public class Bomb implements Weapon{
 
     public Bomb(Personnage owner, ConcretePlateau plateau,boolean visible,int[] position) {
         this.owner = owner;
-        this.compteARebourt=3;
+        this.compteARebourt=3; // Le compte à rebours est initialisé à trois tours complets de tous les joueurs
         this.plateau = plateau;
         this.visible = visible;
         this.position = position;
     }
 
     @Override
-    public Personnage getOwner(){
-        return this.owner;
-    }
-    @Override
-    public boolean isVisible(){
-        return this.visible;
-    }
-    @Override
-    public void detonation() {
-        for(Personnage joueur : this.plateau.getJoueurs()) {
+    public void detonation() { //Méthode qui "déclenche" la bombe
+        for(Personnage joueur : this.plateau.getJoueurs()) { //On vérifie pour chaque joueur s'ils peuvent recevoir des dégâts.
             int joueurX = joueur.getPosition()[0];
             int joueurY = joueur.getPosition()[1];
             if(joueur.getBouclier()){
-                continue;
+                continue; //S'il a son bouclier d'activer, il ne recevra pas de dégât.
             }
+            //On vérifie si le joueur est a porté de la bombe.
             if(joueurX == this.position[0] && joueurY == this.position[1]) {
                 joueur.addEnergie(-1);
             }
@@ -64,7 +57,7 @@ public class Bomb implements Weapon{
         }
     }
 
-    public void tictac(){
+    public void tictac(){ //Méthode permettant d'incrémenter le compte à rebours, et de vérifier s'il est fini, auquel cas on fait exploser la bombe.
         this.compteARebourt--;
         if(this.compteARebourt == 0){
             for(Personnage joueur : this.plateau.getJoueurs()){
@@ -79,5 +72,13 @@ public class Bomb implements Weapon{
     }
     public int getCompteARebourt(){
         return this.compteARebourt;
+    }
+    @Override
+    public Personnage getOwner(){
+        return this.owner;
+    }
+    @Override
+    public boolean isVisible(){
+        return this.visible;
     }
 }

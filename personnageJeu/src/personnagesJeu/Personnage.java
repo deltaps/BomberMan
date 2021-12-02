@@ -16,16 +16,16 @@ import java.io.*;
  *
  * @author pronost
  */
-public class Personnage {
+public class Personnage { //Class représentant un personnage.
     protected String name;
-    protected int energie;
-    protected int munition;
+    protected int energie; //Le joueur possède une énergie
+    protected int munition; //Et un nombre de munitions
     protected int[] position;
     protected boolean bouclier;
 
     public Personnage(String name){
         this.name = name;
-        xmlRead();
+        xmlRead();//On regarde dans le fichier xml pour savoir son nombre de munitions ainsi que son énergie.
         this.position = new int[]{0, 0};
         this.bouclier = false;
     }
@@ -38,14 +38,14 @@ public class Personnage {
 
             saxParser.parse("..\\personnageJeu\\src\\personnagesJeu\\personnage-option.xml", handler);
             String munition = "";
-            for(char character : handler.getMunition()){
+            for(char character : handler.getMunition()){ //On récupère le nombre de munitions
                 munition+= character;
             }
             String energie = "";
-            for(char character : handler.getEnergie()){
+            for(char character : handler.getEnergie()){ //On récupère l'énergie
                 energie+= character;
             }
-            this.munition = Integer.parseInt(munition);
+            this.munition = Integer.parseInt(munition); //On convertit pour devenir un int.
             this.energie = Integer.parseInt(energie);
         }
         catch (Exception e) {

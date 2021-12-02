@@ -1,10 +1,7 @@
 package model;
 
-import observer.AbstractListenableModel;
-import personnagesJeu.Personnage;
-
-public class Case {
-
+public class Case { //Représentation d'une case du plateau.
+    //Une case peut avoir un mur, une pastille et une arme sur elle.
     protected boolean wall;
     protected boolean pastille;
     protected Weapon weapon;

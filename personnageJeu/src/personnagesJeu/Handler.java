@@ -15,19 +15,9 @@ public class Handler extends DefaultHandler {
         this.energie = new ArrayList<>();
         this.pastille = new ArrayList<>();
     }
-    /*
-    public void startDocument(){
-        System.out.println("Début du document");
-    }
-
-    public void endDocument(){
-        System.out.println("Fin du document");
-    }
-     */
 
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts){
-        this.update = qName;
-        // les attributes, il faut faire une boucle sur la length puis affiché le getQname etc avec des getters
+        this.update = qName; //Permets de savoir si nous sommes dans la balise de munitions ou d'énergie lorsque nous allons lire les caractères de la balise.
     }
 
     public void endElement(String namespaceURI, String localName, String qName){
@@ -37,9 +27,9 @@ public class Handler extends DefaultHandler {
     public void characters(char[] ch, int indiceDebut, int longueur){
         ArrayList<Character> liste = new ArrayList<>();
         for(int i=0;i<longueur;i++){
-            liste.add(ch[indiceDebut+i]);
+            liste.add(ch[indiceDebut+i]); //On lit tous les caractères, et on les place dans une liste provisoire.
         }
-        switch (this.update){
+        switch (this.update){ //On regarde si nous sommes dans la balise de munitions ou d'énergie
             case "munitions":
                 this.munition = liste;
                 break;

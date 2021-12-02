@@ -5,6 +5,7 @@
     <property name="projet.build.dir" value="${basedir}/build"/>
     <property name="projet.lib.dir" value="lib"/>
     <property name="projet.dist.dir" value="${basedir}/dist"/>
+    <property name="projet.libcombat.dir" value="jeuCombat/lib"/>
 
     <path id="projet.classpath">
         <fileset dir="${projet.lib.dir}">
@@ -40,11 +41,9 @@
     </target>
 
     <target name="prepare">
-
         <mkdir dir="${projet.dist.dir}"/>
         <mkdir dir="${projet.build.dir}"/>
         <mkdir dir="${projet.lib.dir}"/>
-
     </target>
 
 </project>

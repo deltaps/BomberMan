@@ -2,7 +2,7 @@ package model;
 
 import personnagesJeu.Personnage;
 
-public class LandMine implements Weapon{
+public class LandMine implements Weapon{//Notre class pour représenter une mine.
 
     protected Personnage owner;
     protected ConcretePlateau plateau;
@@ -25,24 +25,25 @@ public class LandMine implements Weapon{
     }
 
     @Override
-    public void detonation() {
-        for(Personnage joueur : this.plateau.getJoueurs()) {
+    public void detonation() { //Méthode qui vérifie si la mine doit être déclenchée.
+        for(Personnage joueur : this.plateau.getJoueurs()) { //On regarde si un joueur est sur la mine.
             int joueurX = joueur.getPosition()[0];
             int joueurY = joueur.getPosition()[1];
             if(this == this.plateau.getCase(joueurX, joueurY).getWeapon()) {
-                boomboom(joueurX, joueurY);
+                boomboom(joueurX, joueurY);//Si le joueur est sur la mine on déclenche la mine.
                 break;
             }
         }
     }
 
-    public void boomboom(int bombX, int bombY) {
-        for(Personnage joueur : this.plateau.getJoueurs()) {
+    public void boomboom(int bombX, int bombY) { //Méthode qui déclenche la mine.
+        for(Personnage joueur : this.plateau.getJoueurs()) { //On vérifie pour chaque joueur s'ils peuvent recevoir des dégâts.
             int joueurX = joueur.getPosition()[0];
             int joueurY = joueur.getPosition()[1];
             if(joueur.getBouclier()){
-                continue;
+                continue;//S'il a son bouclier d'activer, il ne recevra pas de dégât.
             }
+            //On vérifie si le joueur est a porté de la bombe.
             if(joueurX == bombX && joueurY == bombY) {
                 joueur.addEnergie(-1);
             }
