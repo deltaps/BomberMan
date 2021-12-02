@@ -3,15 +3,12 @@ package model;
 import observer.AbstractListenableModel;
 import personnagesJeu.Personnage;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class Model extends AbstractListenableModel {
     //TODO UML
     //TODO RAPPORT
-    //TODO Vue "responsive" ajout de fin de jeu, possibilité de choisir le jeu (nbJoueurs, taille plateau)
     protected final int[] HAUT = new int[]{-1,0};
     protected final int[] BAS = new int[]{1,0};
     protected final int[] GAUCHE = new int[]{0,-1};
@@ -199,7 +196,7 @@ public class Model extends AbstractListenableModel {
                 this.changePlayer();
                 break;
         }
-        fireChange(); //----------------------------
+        fireChange();
     }
 
     @Override
