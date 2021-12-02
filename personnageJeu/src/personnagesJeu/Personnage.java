@@ -36,7 +36,7 @@ public class Personnage { //Class représentant un personnage.
             SAXParser saxParser = factory.newSAXParser();
             Handler handler = new Handler();
 
-            saxParser.parse("..\\personnageJeu\\src\\personnagesJeu\\personnage-option.xml", handler);
+            saxParser.parse("./personnage-option.xml", handler);
             String munition = "";
             for(char character : handler.getMunition()){ //On récupère le nombre de munitions
                 munition+= character;

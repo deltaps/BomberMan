@@ -42,14 +42,27 @@
 </target>
 
 <target name="packaging" depends="prepare,compile,javadoc">
-	<jar jarfile="${projet.dist.dir}/BomberMan.jar" basedir="${projet.build.dir}">
-		<manifest>
-				<attribute name="Main-Class" value="lanceur.Graphique" />
-		</manifest>
-	</jar>
+
+	<copy  todir="${projet.dist.dir}/lib">
+		<fileset dir="${projet.lib.dir}"/>
+	</copy>
+
 	<copy todir="${projet.dist.dir}/images">
 		<fileset dir="./images"/>
 	</copy>
+
+	<copy todir="${projet.dist.dir}">
+		<fileset dir="${basedir}">
+			<include name="personnage-option.xml"/>
+		</fileset>
+	</copy>
+
+	<jar jarfile="${projet.dist.dir}/BomberMan.jar" basedir="${projet.build.dir}">
+		<manifest>
+				<attribute name="Main-Class" value="lanceur.Graphique" />
+				<attribute name="Class-Path" value="lib/PersonnagesJeu.jar" />
+		</manifest>
+	</jar>
 </target>
 
 <target name="prepare">
