@@ -114,6 +114,7 @@ public class Model extends AbstractListenableModel {
     public void changePlayer() { //Méthode permettant de passer aux joueurs suivants, d'incrémenter les compteurs de bombes et de supprimer un joueur de la liste s'il est mort.
         for (int n = 0; n < this.listeJoueurs.size(); n++) {
             if(this.listeJoueurs.get(n).getEnergie() <= 0){//Vérification si le joueur est mort.
+                this.concretePlateau.getJoueurs().remove(this.listeJoueurs.get(n));
                 this.listeJoueurs.remove(n);
             }
             if (this.listeJoueurs.get(n) == this.currentPlayer) {
