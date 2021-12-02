@@ -14,14 +14,14 @@ public class Action { //Class permettant au model de faire des actions
     public void deplacement(Personnage joueur,int[] direction){
         Boolean pasSurjoueur = true;
         for(Personnage joueurAdv : this.concretePlateau.getJoueurs()){
-            if(joueurAdv != joueur){
+            if(joueurAdv != joueur){ // Pour tous les joueurs adverses
                 if(joueur.getPosition()[0] + direction[0] == joueurAdv.getPosition()[0] && joueur.getPosition()[1] + direction[1] == joueurAdv.getPosition()[1]){
-                    pasSurjoueur = false;
+                    pasSurjoueur = false; // Si le joueur veut se déplacer sur la position d'un autre joueur
                 }
             }
         }
-        if(joueur.getEnergie() > 1 && pasSurjoueur){
-            if(!(concretePlateau.getPlateau()[joueur.getPosition()[0]+direction[0]][joueur.getPosition()[1]+direction[1]].getWall())){
+        if(joueur.getEnergie() > 1 && pasSurjoueur){ // S'il a assez d'énergie pour le déplacement et qu'il ne se déplace pas sur un autre joueur
+            if(!(concretePlateau.getPlateau()[joueur.getPosition()[0]+direction[0]][joueur.getPosition()[1]+direction[1]].getWall())){ // Si le déplacement n'est pas sur un mur
                 int[] nouvellePosition = new int[]{joueur.getPosition()[0]+direction[0],joueur.getPosition()[1]+direction[1]};
                 joueur.setPosition(nouvellePosition); //On lui donne ça nouvelle position.
                 joueur.setEnergie(joueur.getEnergie()-1);

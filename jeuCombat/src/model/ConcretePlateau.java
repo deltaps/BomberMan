@@ -9,7 +9,7 @@ public class ConcretePlateau implements Plateau {
     protected List<Personnage> joueurs;
     protected int taille;
 
-    public ConcretePlateau(List<Personnage> joueurs, int taille){
+    public ConcretePlateau(List<Personnage> joueurs, int taille){ // Constructeur pour un plateau aléatoire
         if(taille < 7){
             throw new IllegalArgumentException("Votre taille doit être supérieur ou égale à 7");
         }
@@ -20,7 +20,7 @@ public class ConcretePlateau implements Plateau {
         generePlateau(taille);
     }
 
-    public ConcretePlateau(List<Personnage> joueurs, int taille, boolean test){
+    public ConcretePlateau(List<Personnage> joueurs, int taille, boolean test){ // Constructeur pour un plateau de test vide non aléatoire
         this.plateau = new Case[taille][taille];
         for(int x = 0; x < taille; x++){
             for(int y = 0; y < taille; y++){
@@ -36,7 +36,7 @@ public class ConcretePlateau implements Plateau {
         this.joueurs.addAll(joueurs);
     }
 
-    public ConcretePlateau(List<Personnage> joueurs, boolean test){
+    public ConcretePlateau(List<Personnage> joueurs, boolean test){ // Constructeur pour un plateau de test non aléatoire de 3x3 avec deux murs dans les coins supérieur droit et inférieur gauche
         this.plateau = new Case[3][3];
         for(int x = 0; x < 3; x++){
             for(int y = 0; y < 3; y++){
@@ -53,7 +53,7 @@ public class ConcretePlateau implements Plateau {
     }
 
     public void generePlateau(int taille){
-        // Placement des contour des murs
+        // Placement des murs représentants les bordures du plateau
         for(int x = 0; x < taille; x++){
             for(int y = 0; y < taille; y++){
                 if(x == 0 | y == 0 | x == taille-1 | y == taille-1){
@@ -65,19 +65,21 @@ public class ConcretePlateau implements Plateau {
             }
         }
         //Placement des murs aléatoires.
-        int nbMur = taille*3;
-        ArrayList<Integer> listeBlock = new ArrayList<>();
+        int nbMur = taille*3; // pour une taille égale à 7 on peut poser un maximum de taille*3 murs sans que la partie ne soit bloquée dans le pire des cas
+        ArrayList<Integer> listeBlock = new ArrayList<>(); // une liste des cases sur lesquels un mur ne peux pas se poser au risque de bloquer certaine zone de la carte ou même bloquer la partie en séparant deux joueurs
         while(nbMur != 0) {
             int x = new Random().nextInt(taille-6);
-            x += 3;
+            x += 3; // on tire un x aléatoire avec une distance aux bordures de 3 comme les murs sont des lignes de 3 murs consécutifs il faut laisser au moins une case libre pour contourner le mur et ne pas bloquer le jeu
             int y = new Random().nextInt(taille-6);
-            y += 3;
-            int oui = new Random().nextInt(2);
-            if(oui == 1){
-                if(!(listeBlock.contains((taille*x)+y) || listeBlock.contains((taille*x)+y+1) || listeBlock.contains((taille*x)+y-1))){
+            y += 3; // pareil pour y
+            int oui = new Random().nextInt(2); // on tire un aléatoire qui va dire si le mur est en position verticale ou horizontale
+            if(oui == 1){ // position horizontale
+                if(!(listeBlock.contains((taille*x)+y) || listeBlock.contains((taille*x)+y+1) || listeBlock.contains((taille*x)+y-1))){ // Si le mur ne se pose pas sur une des cases interdites
+                    // on place le mur
                     this.plateau[x][y].setWall(true);
                     this.plateau[x][y + 1].setWall(true);
                     this.plateau[x][y - 1].setWall(true);
+                    // on bloque trois cases dans la position opposée aux extrémités du mur
                     listeBlock.add(((x - 1) * taille) + (y - 2));
                     listeBlock.add(((x - 1) * taille) + (y + 2));
                     listeBlock.add((x * taille) + (y - 2));
@@ -91,11 +93,13 @@ public class ConcretePlateau implements Plateau {
 
                 }
             }
-            else{
-                if(!(listeBlock.contains((taille*x)+y) || listeBlock.contains((taille*(x+1))+y) || listeBlock.contains((taille*(x-1))+y))) {
+            else{ // Sinon le mur est en position verticale
+                if(!(listeBlock.contains((taille*x)+y) || listeBlock.contains((taille*(x+1))+y) || listeBlock.contains((taille*(x-1))+y))) { // on vérifie s'il ne se pose pas sur les cases interdites
+                    // on pose le mur
                     this.plateau[x][y].setWall(true);
                     this.plateau[x - 1][y].setWall(true);
                     this.plateau[x + 1][y].setWall(true);
+                    // on bloque trois cases dans la position opposée aux extrémités du mur
                     listeBlock.add(((x - 2) * taille) + (y - 1));
                     listeBlock.add(((x - 2) * taille) + y);
                     listeBlock.add(((x - 2) * taille) + (y + 1));
@@ -115,18 +119,21 @@ public class ConcretePlateau implements Plateau {
             }
             nbMur--;
         }
-        // Placement des pastille d'énergie
+        // Placement des pastilles d'énergie
         for(int i = 0; i < taille / 2; i++){
+            // on tire un x et un y sur le plateau qui n'est pas sur les bordures
             int x = new Random().nextInt(taille-2);
             int y = new Random().nextInt(taille-2);
             x++;
             y++;
+            // tant qu'il y a un mur sur la position tirée on en retire une nouvelle
             while(this.plateau[x][y].getWall()){
                 x = new Random().nextInt(taille-2);
                 y = new Random().nextInt(taille-2);
                 x++;
                 y++;
             }
+            // Si tout est bon on peut poser la pastille
             this.plateau[x][y].setPastille(true);
         }
     }

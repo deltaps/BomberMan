@@ -135,14 +135,14 @@ public class Model extends AbstractListenableModel {
     }
 
     public void compteurBombe(Personnage player){
-        for(Case[] casex : this.concretePlateau.getPlateau()){
-            for(Case casey : casex){
-                if(casey.getWeapon() != null){
-                    if (casey.getWeapon() instanceof Bomb && casey.getWeapon().getOwner() == player){
-                        ((Bomb) casey.getWeapon()).tictac();
-                        if(((Bomb) casey.getWeapon()).getCompteARebourt() == 0){
-                            casey.getWeapon().detonation();
-                            casey.setWeapon(null);
+        for(Case[] casex : this.concretePlateau.getPlateau()){ // pour toutes les lignes
+            for(Case casey : casex){ // pour toutes les cases de ces lignes
+                if(casey.getWeapon() != null){ // Si il y a une arme
+                    if (casey.getWeapon() instanceof Bomb && casey.getWeapon().getOwner() == player){ // Que cette arme est une bombe qui appartient au joueur
+                        ((Bomb) casey.getWeapon()).tictac(); // on décrémente son compte à rebours
+                        if(((Bomb) casey.getWeapon()).getCompteARebourt() == 0){ // Si son compte à rebours est à 0
+                            casey.getWeapon().detonation(); // on la fait exploser
+                            casey.setWeapon(null); // on la supprime de la case
                         }
                     }
                 }
@@ -151,55 +151,55 @@ public class Model extends AbstractListenableModel {
     }
 
     public void action(int action, int[] direction, boolean visible){
-        Case caseCourante = this.concretePlateau.getCase(this.currentPlayer.getPosition()[0]+direction[0],this.currentPlayer.getPosition()[1]+direction[1]);
+        Case caseCourante = this.concretePlateau.getCase(this.currentPlayer.getPosition()[0]+direction[0],this.currentPlayer.getPosition()[1]+direction[1]); // on get la case concerner par le déplacement
         switch (action) {
-            case DEPLACEMENT:
-                this.action.deplacement(this.currentPlayer, direction);
-                if (this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer) != null) {
-                    this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer).detonation();
-                    this.concretePlateau.getCase(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1]).setWeapon(null);
+            case DEPLACEMENT: // Si on veut faire un déplacement
+                this.action.deplacement(this.currentPlayer, direction); // on déplace le joueur
+                if (this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer) != null) { // Si le joueur se trouve sur une arme
+                    this.concretePlateau.getArme(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1], this.currentPlayer).detonation(); // l'arme explose
+                    this.concretePlateau.getCase(this.currentPlayer.getPosition()[0], this.currentPlayer.getPosition()[1]).setWeapon(null); // on supprime l'arme
                 }
-                if(this.concretePlateau.getPlateau()[this.currentPlayer.getPosition()[0]][this.currentPlayer.getPosition()[1]].getPastille()){
-                    this.currentPlayer.addEnergie(5);
-                    this.concretePlateau.getPlateau()[this.currentPlayer.getPosition()[0]][this.currentPlayer.getPosition()[1]].setPastille(false);
+                if(this.concretePlateau.getPlateau()[this.currentPlayer.getPosition()[0]][this.currentPlayer.getPosition()[1]].getPastille()){ // Si le joueur est sur une pastille d'énérgie
+                    this.currentPlayer.addEnergie(5); // Le joueur gagne 5 énergies
+                    this.concretePlateau.getPlateau()[this.currentPlayer.getPosition()[0]][this.currentPlayer.getPosition()[1]].setPastille(false); // on supprime la pastille
                 }
                 break;
-            case MINE:
+            case MINE: // Si on veut placer une mine
                 Boolean pasSurJoueur = true;
                 for(Personnage joueurAdv : this.listeJoueurs){
                     if(this.concretePlateau.getCase(joueurAdv.getPosition()[0],joueurAdv.getPosition()[1]) == caseCourante){
-                        pasSurJoueur = false;
+                        pasSurJoueur = false; // on vérifie qu'aucun joueur n'est sur la case ou on veut poser la mine
                     }
                 }
-                if(caseCourante.getWeapon() == null && !caseCourante.getPastille() && pasSurJoueur){
-                    this.action.poseMine(this.currentPlayer, direction, visible);
+                if(caseCourante.getWeapon() == null && !caseCourante.getPastille() && pasSurJoueur){ // S'il n'y a pas déjà une arme et qu'aucun joueur n'occupe la case
+                    this.action.poseMine(this.currentPlayer, direction, visible); // on pose la mine
                 }
                 break;
-            case BOMBE:
+            case BOMBE: // Si on veut placer une bombe
                 pasSurJoueur = true;
                 for(Personnage joueurAdv : this.listeJoueurs){
                     if(this.concretePlateau.getCase(joueurAdv.getPosition()[0],joueurAdv.getPosition()[1]) == caseCourante){
-                        pasSurJoueur = false;
+                        pasSurJoueur = false; // on vérifie qu'aucun joueur n'est sur la case ou on veut poser la bombe
                     }
                 }
-                if(caseCourante.getWeapon() == null && !caseCourante.getPastille() && pasSurJoueur){
-                    this.action.poseBombe(this.currentPlayer, direction, visible);
+                if(caseCourante.getWeapon() == null && !caseCourante.getPastille() && pasSurJoueur){ // S'il n'y a pas déjà une arme et qu'aucun joueur n'occupe la case
+                    this.action.poseBombe(this.currentPlayer, direction, visible); // on pose la bombe
                 }
                 break;
-            case TIR:
-                this.action.fire(this.currentPlayer, direction);
-                this.changePlayer();
+            case TIR: // Si on veut tirer
+                this.action.fire(this.currentPlayer, direction); // on tire dans la direction voulue
+                this.changePlayer(); // on change de joueur
                 break;
-            case BOUCLIER:
-                this.action.bouclier(this.currentPlayer);
-                this.changePlayer();
+            case BOUCLIER: // Si on veut se protéger
+                this.action.bouclier(this.currentPlayer); // on lance l'action pour se protéger
+                this.changePlayer(); // on change de joueur
                 break;
-            case RIENFAIRE:
-                this.action.neRienFaire(this.currentPlayer);
-                this.changePlayer();
+            case RIENFAIRE: // Si on veut ne rien faire
+                this.action.neRienFaire(this.currentPlayer); // on lance l'action neRienFaire
+                this.changePlayer(); // on change de joueur
                 break;
         }
-        fireChange();
+        fireChange(); // on prévient les écouteurs des changements
     }
 
     @Override

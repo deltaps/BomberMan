@@ -9,7 +9,7 @@ public class ProxyPlateau implements Plateau {
     public ProxyPlateau(ConcretePlateau plateau){
         this.plateau = plateau;
     }
-
+    
     @Override
     public void generePlateau(int taille) {
         this.plateau.generePlateau(taille);
@@ -37,16 +37,16 @@ public class ProxyPlateau implements Plateau {
 
     @Override
     public Weapon getArme(int x, int y,Personnage joueur){
-        if(this.plateau.getArme(x,y,joueur) == null){
+        if(this.plateau.getArme(x,y,joueur) == null){ // Si il n'y a pas d'arme sur la case on return null
             return null;
         }
-        if(this.plateau.getArme(x,y,joueur).isVisible()){
+        if(this.plateau.getArme(x,y,joueur).isVisible()){ // Si l'arme est visible elle s'affiche
             return this.plateau.getArme(x,y,joueur);
         }
-        if(this.plateau.getArme(x,y,joueur).getOwner() == joueur){
+        if(this.plateau.getArme(x,y,joueur).getOwner() == joueur){ // Sinon l'arme n'est pas visible et on vérifie si elle appartient au joueur, si c'est le cas il voie son arme
             return this.plateau.getArme(x,y,joueur);
         }
-        else{
+        else{ // Sinon l'arme n'est pas visible et n'appartient pas au joueur donc il ne la voie pas
             return null;
         }
     }
