@@ -38,6 +38,7 @@
     <target name="packaging" depends="prepare,compile,javadoc">
         <jar jarfile="${projet.dist.dir}/PersonnagesJeu.jar" basedir="${projet.build.dir}">
         </jar>
+        <copy file="${projet.dist.dir}/PersonnagesJeu.jar" todir="${basedir}/../jeuCombat/lib" />
     </target>
 
     <target name="prepare">
