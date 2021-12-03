@@ -88,7 +88,6 @@ class ActionTest {
         action2.poseMine(joueur,HAUT,false);
         assertFalse(concretePlateau2.getCase(0,1).getWeapon() instanceof LandMine);
     }
-    //TODO crée le restes des tests
     @org.junit.jupiter.api.Test
     void poseBombe() {
         Personnage joueur = new Personnage("Jean");
@@ -125,7 +124,7 @@ class ActionTest {
     }
 
     @org.junit.jupiter.api.Test
-    void fire() { //TODO Dans ce test je pars du principe que le tir fait perdre 2 d'énergie a un joueurs, et que tirer ne fait pas perdre d'énergie au tireur, il faut donc que l'on ce mette d'accord sur ça.
+    void fire() { //Dans ce test je pars du principe que le tir fait perdre 2 d'énergie a un joueur, et que tirer ne fait pas perdre d'énergie au tireur, il faut donc que l'on se mette d'accord sur ça.
         Personnage joueur = new Personnage("Jean");
         int energieJ1 = joueur.getEnergie();
         int munitionJ1 = joueur.getMunition();
@@ -148,13 +147,10 @@ class ActionTest {
         assertEquals(joueur2.getMunition(), munitionJ2 - 1);
         action.fire(joueur2,HAUT);
         assertTrue(joueur.getEnergie() == energieJ1-2);
-        //TODO diversifié le test (un peu trop minimaliste, ne regarde que si le tir marche a gauche, a droite, et a travers d'un mur)
     }
 
     @org.junit.jupiter.api.Test
     void bouclier(){
-        //TODO diversifié le test, on ne vérifie pas si le bouclié est annulé au bout d'un tour.
-        // Par contre j'ai vérifié l'action de tir dans ce test la (vue que j'ai implémenté la fonctionnalité de bouclier après).
         Personnage joueur = new Personnage("Jean");
         int energieJ1 = joueur.getEnergie();
         Personnage joueur2 = new Personnage("Pierre");
@@ -177,7 +173,6 @@ class ActionTest {
 
     @org.junit.jupiter.api.Test
     void neRienFaire() {
-        //TODO il faut que l'on ce mette d'accord sur combien d'energie le joueur gagne en ne faisant rien (dans mon cas je fait comme si il en gagné 1)
         Personnage joueur = new Personnage("Jean");
         int energieJoueur = joueur.getEnergie();
         int posistionX = joueur.getPosition()[0];
