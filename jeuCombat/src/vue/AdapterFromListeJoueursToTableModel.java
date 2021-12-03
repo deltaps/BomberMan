@@ -34,12 +34,16 @@ public class AdapterFromListeJoueursToTableModel implements TableModel {
 
     @Override
     public String getColumnName(int columnIndex) {
-        return switch (columnIndex) {
-            case ID -> "ID";
-            case JOUEUR -> "Nom";
-            case ENERGIE -> "Énergie";
-            default -> null;
-        };
+        switch (columnIndex){
+            case ID:
+                return "ID";
+            case JOUEUR:
+                return "Nom";
+            case ENERGIE:
+                return "Énergie";
+            default:
+                return null;
+        }
     }
 
     @Override
@@ -55,22 +59,30 @@ public class AdapterFromListeJoueursToTableModel implements TableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         if(rowIndex == 0) {
-            return switch (columnIndex) {
-                case ID -> "ID";
-                case JOUEUR -> "Nom";
-                case ENERGIE -> "Énergie";
-                default -> null;
-            };
+            switch (columnIndex){
+                case ID:
+                    return "ID";
+                case JOUEUR:
+                    return "Nom";
+                case ENERGIE:
+                    return "Énergie";
+                default:
+                    return null;
+            }
         }
         else {
             rowIndex -= 1;
             Personnage p = this.joueurs.get(rowIndex);
-            return switch (columnIndex) {
-                case ID -> rowIndex+1;
-                case JOUEUR -> p.getName();
-                case ENERGIE -> p.getEnergie();
-                default -> null;
-            };
+            switch (columnIndex){
+                case ID:
+                    return rowIndex+1;
+                case JOUEUR:
+                    return p.getName();
+                case ENERGIE:
+                    return p.getEnergie();
+                default:
+                    return null;
+            }
         }
     }
 

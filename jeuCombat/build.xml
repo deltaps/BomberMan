@@ -20,9 +20,9 @@
 </target>
 
 <target name="init">
-<echo message="Initialisation de ${ant.project.name}"/>
-<delete dir="${basedir}/gen"/>
-<mkdir dir="${basedir}/gen"/>
+	<echo message="Initialisation de ${ant.project.name}"/>
+	<delete dir="${basedir}/gen"/>
+	<mkdir dir="${basedir}/gen"/>
 </target>
 
 <target name="run" description="execution" depends="compile">
