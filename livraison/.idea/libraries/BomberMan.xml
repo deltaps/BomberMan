@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="BomberMan">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/dist/BomberMan.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
