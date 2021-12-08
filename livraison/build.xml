@@ -67,11 +67,11 @@
 </target>
 
 <target name="prepare">
-
+	<delete dir="${projet.dist.dir}"/>
   <mkdir dir="${projet.dist.dir}"/>
+	<delete dir="${projet.build.dir}"/>
   <mkdir dir="${projet.build.dir}"/>
   <mkdir dir="${projet.lib.dir}"/>
-
 </target>
 
 </project>

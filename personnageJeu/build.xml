@@ -5,7 +5,7 @@
     <property name="projet.build.dir" value="${basedir}/build"/>
     <property name="projet.lib.dir" value="lib"/>
     <property name="projet.dist.dir" value="${basedir}/dist"/>
-    <property name="projet.libcombat.dir" value="livraison/lib"/>
+    <property name="projet.libcombat.dir" value="${basedir}/../livraison/lib"/>
 
     <path id="projet.classpath">
         <fileset dir="${projet.lib.dir}">
@@ -41,13 +41,17 @@
     <target name="packaging" depends="prepare,compile,javadoc">
         <jar jarfile="${projet.dist.dir}/PersonnagesJeu.jar" basedir="${projet.build.dir}">
         </jar>
-        <copy file="${projet.dist.dir}/PersonnagesJeu.jar" todir="${basedir}/../jeuCombat/lib" />
+        <copy file="${projet.dist.dir}/PersonnagesJeu.jar" todir="${projet.libcombat.dir}" />
     </target>
 
     <target name="prepare">
+        <delete dir="${projet.dist.dir}"/>
         <mkdir dir="${projet.dist.dir}"/>
+        <delete dir="${projet.build.dir}"/>
         <mkdir dir="${projet.build.dir}"/>
         <mkdir dir="${projet.lib.dir}"/>
+
+        <delete file="${projet.libcombat.dir}/PersonnagesJeu.jar"/>
     </target>
 
 </project>
