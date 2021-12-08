@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="355c0358-5248-43b8-9b86-51cc820bd462" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/ant.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/libraries/PersonnagesJeu.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/controller/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/controller/EcouteurSouris.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/lanceur/Graphique.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/lanceur/Terminal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/Action.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/Bomb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/Case.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/ConcretePlateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/LandMine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/Plateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/ProxyPlateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/model/Weapon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/observer/AbstractListenableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/observer/ListenableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/observer/ModelListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/controller/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/controller/EcouteurSouris.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/lanceur/Graphique.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/lanceur/Terminal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/Action.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/Bomb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/Case.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/ConcretePlateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/LandMine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/Plateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/ProxyPlateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/model/Weapon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/observer/AbstractListenableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/observer/ListenableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/observer/ModelListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/ActionJoueur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/AdapterFromListeJoueursToTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/Image.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/InfoJoueur$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/InfoJoueur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/Vue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/VueOptions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/jeuCombat/vue/VuePlateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/personnageJeu/personnagesJeu/Handler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/personnageJeu/personnagesJeu/MainClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/production/personnageJeu/personnagesJeu/Personnage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/test/jeuCombat/model/ActionTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/test/jeuCombat/model/ModelTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/ActionJoueur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/AdapterFromListeJoueursToTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/Image.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/InfoJoueur$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/InfoJoueur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/Vue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/VueOptions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/build/vue/VuePlateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/BomberMan.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/bomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/case.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/joueur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/joueurEnnemi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/mine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/mur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/pastille.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/images/tir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/PersonnagesJeu.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/apiguardian-api-1.1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/hamcrest-core-1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/junit-4.13.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/junit-jupiter-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/junit-jupiter-api-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/junit-jupiter-engine-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/junit-jupiter-params-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/junit-platform-commons-1.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/junit-platform-engine-1.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/lib/opentest4j-1.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/dist/personnage-option.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/controller/Controller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/controller/EcouteurSouris.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/controller/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/controller/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/lanceur/Graphique.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/lanceur/Terminal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/lanceur/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/lanceur/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/legal/COPYRIGHT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/Action.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/Bomb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/Case.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/ConcretePlateau.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/LandMine.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/Model.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/Plateau.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/ProxyPlateau.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/Weapon.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/model/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/observer/AbstractListenableModel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/observer/ListenableModel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/observer/ModelListener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/observer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/observer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/ActionJoueur.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/AdapterFromListeJoueursToTableModel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/Image.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/InfoJoueur.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/Vue.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/VueOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/VuePlateau.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/doc/vue/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/bomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/case.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/joueur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/joueurEnnemi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/mine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/mur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/pastille.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/images/tir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/jeuCombat.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/PersonnagesJeu.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/apiguardian-api-1.1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/hamcrest-core-1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/junit-4.13.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/junit-jupiter-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/junit-jupiter-api-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/junit-jupiter-engine-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/junit-jupiter-params-5.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/junit-platform-commons-1.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/junit-platform-engine-1.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/lib/opentest4j-1.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/personnage-option.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/controller/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/controller/EcouteurSouris.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/lanceur/Graphique.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/lanceur/Terminal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/Action.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/Bomb.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/Case.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/ConcretePlateau.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/LandMine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/Model.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/Plateau.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/ProxyPlateau.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/model/Weapon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/observer/AbstractListenableModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/observer/ListenableModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/observer/ModelListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/vue/ActionJoueur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/vue/AdapterFromListeJoueursToTableModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/vue/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/vue/InfoJoueur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/vue/Vue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/vue/VueOptions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/src/vue/VuePlateau.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/test/model/ActionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jeuCombat/test/model/ModelTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personnageJeu/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personnageJeu/personnageJeu.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="21ztr0drWQkg38gvDZ7G3JHeVfn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Graphique" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="lanceur.Graphique" />
+      <module name="livraison" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="355c0358-5248-43b8-9b86-51cc820bd462" name="Changes" comment="" />
+      <created>1638955942345</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638955942345</updated>
+      <workItem from="1638955944110" duration="287000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
